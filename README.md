@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +45,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+=======
+# art-museum
+This is a test task to upgrade my skills in production frontend stack [react + typescript + husky + react-router-dom + styled-components + custom eslint&amp;prettier setup]
+>>>>>>> 6309d23 (Initial commit)
