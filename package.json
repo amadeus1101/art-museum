@@ -45,12 +45,12 @@
       "last 1 safari version"
     ]
   },
-  "husky": {    
-   "hooks": {      
-     "pre-commit": "YOUR_COMMAND_HERE", 
-     "pre-push": "YOUR_COMMAND_HERE"   
-   }  
-},
+  "husky": {
+    "hooks": {
+      "pre-commit": "YOUR_COMMAND_HERE",
+      "pre-push": "YOUR_COMMAND_HERE"
+    }
+  },
   "devDependencies": {
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",

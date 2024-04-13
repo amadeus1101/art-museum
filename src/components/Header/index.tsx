@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import HeaderStyles from './styled';
-import logo_museum from '../../assets/img/logo-museum.png';
+import Logo from '../Logo';
 import icon_home from '../../assets/img/icon_home.png';
 import icon_favourites from '../../assets/img/icon-bookmark.png';
 
@@ -9,9 +9,7 @@ const Header = () => {
   return (
     <HeaderStyles>
       <nav className={burgerActive ? 'active' : ''}>
-        <div className="logo">
-          <img src={logo_museum} alt="art-museum-logo" />
-        </div>
+        <Logo icon={1} visibility={burgerActive} />
         <div className="burger" onClick={() => setBurgerActive(!burgerActive)}></div>
         <div className="navbar">
           <a className="home" href="#">

@@ -13,10 +13,7 @@ const HeaderStyles = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .logo img {
-      width: 206px;
-      height: 63px;
-    }
+
     .burger {
       display: none;
     }
@@ -44,10 +41,6 @@ const HeaderStyles = styled.header`
   }
   @media ${devices.laptop} {
     nav {
-      .logo img {
-        width: calc(206px * 0.75);
-        height: calc(63px * 0.75);
-      }
       .navbar a span {
         font-size: 14px;
       }
@@ -58,9 +51,6 @@ const HeaderStyles = styled.header`
       position: relative;
       flex-direction: column;
       align-items: center;
-      .logo {
-        display: none;
-      }
       .burger {
         display: block;
         position: relative;
@@ -89,13 +79,6 @@ const HeaderStyles = styled.header`
       }
       &.active {
         height: calc(100dvh - 64px);
-        .logo {
-          display: block;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-        }
         .navbar {
           display: flex;
           flex-direction: column;
