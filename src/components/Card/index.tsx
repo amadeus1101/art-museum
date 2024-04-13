@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import CardStyles from './styled';
-import bookmark_icon from '../../assets/img/icon-bookmark-2.png';
 import default_icon from '../../assets/img/image-default.png';
+import Bookmark from '../Bookmark';
 
 interface ICard {
   icon: string;
@@ -22,9 +22,7 @@ const Card: FC<ICard> = ({ icon, title, author, status }) => {
           <span>{author}</span>
           <b>{status}</b>
         </div>
-        <div className="bookmark">
-          <img src={bookmark_icon} alt="bookmark-icon" />
-        </div>
+        <Bookmark />
       </div>
     </CardStyles>
   );

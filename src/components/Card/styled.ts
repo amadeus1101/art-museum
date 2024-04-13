@@ -51,19 +51,6 @@ const CardStyles = styled.div`
         line-height: 26px;
       }
     }
-    .bookmark {
-      width: 59px;
-      height: 59px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f9f9f9;
-      border-radius: 50%;
-      img {
-        width: 24px;
-        height: 24px;
-      }
-    }
   }
 `;
 

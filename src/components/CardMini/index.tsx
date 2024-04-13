@@ -3,6 +3,7 @@ import MiniCardStyles from './styled';
 import bookmark_icon from '../../assets/img/icon-bookmark-2.png';
 
 import default_icon from '../../assets/img/image-micro.png';
+import Bookmark from '../Bookmark';
 
 interface IMiniCard {
   icon: string;
@@ -22,9 +23,7 @@ const CardMini: FC<IMiniCard> = ({ icon, title, author, status }) => {
         <span>{author}</span>
         <b>{status}</b>
       </div>
-      <div className="bookmark">
-        <img src={bookmark_icon} alt="bookmark-icon" />
-      </div>
+      <Bookmark />
     </MiniCardStyles>
   );
 };

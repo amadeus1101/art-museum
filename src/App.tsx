@@ -5,6 +5,7 @@ import BannerText from './components/BannerText';
 import HeadlineText from './components/HeadlineText';
 import CardMini from './components/CardMini';
 import Card from './components/Card';
+import Pagination from './components/Pagination';
 
 function App() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -52,6 +53,7 @@ function App() {
           />
         ))}
       </div>
+      <Pagination />
       <Footer />
     </>
   );
