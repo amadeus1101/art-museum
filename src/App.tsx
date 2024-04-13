@@ -4,14 +4,34 @@ import Input from './components/Input';
 import BannerText from './components/BannerText';
 import HeadlineText from './components/HeadlineText';
 import CardMini from './components/CardMini';
+import Card from './components/Card';
 
 function App() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  const arr2 = [11, 12, 13];
   return (
     <>
       <Header />
       <BannerText content="Let's Find Some Art Here!" />
       <Input />
+      <HeadlineText title="Our special gallery" subtitle="Topics for you" />
+      <div
+        style={{
+          width: '1280px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}>
+        {arr2.map((el) => (
+          <Card
+            icon="./assets/img/image-micro.png"
+            title="Charles V, bust length, holding a sword, facing right"
+            author="Giovanni Britto"
+            status="Public"
+            key={el}
+          />
+        ))}
+      </div>
       <HeadlineText title="Our special gallery" subtitle="Topics for you" />
       <div
         style={{
@@ -32,7 +52,6 @@ function App() {
           />
         ))}
       </div>
-
       <Footer />
     </>
   );
