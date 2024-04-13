@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   }
+  body {
+    background: #f5f5f5;
+  }
   li {
     list-style: none;
   }
@@ -14,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: ${theme.colors.white};
   }
+  
 `;
 
 export default GlobalStyle;
