@@ -7,9 +7,11 @@ import icon_favourites from '../../assets/img/icon-bookmark.png';
 const Header = () => {
   const [burgerActive, setBurgerActive] = useState(false);
   return (
-    <HeaderStyles>
-      <nav className={burgerActive ? 'active' : ''}>
-        <Logo icon={1} visibility={burgerActive} />
+    <HeaderStyles burgerVisability={burgerActive}>
+      <nav>
+        <div className="logo__inner">
+          <Logo icon={1} />
+        </div>
         <div className="burger" onClick={() => setBurgerActive(!burgerActive)}></div>
         <div className="navbar">
           <a className="home" href="#">
