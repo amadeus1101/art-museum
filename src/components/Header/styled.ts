@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { devices } from '../../constants/devices';
 import { theme } from '../../constants/theme';
 
-const HeaderStyles = styled.header<{ burgerVisability: boolean }>`
+const HeaderStyles = styled.header<{ burgervisability: boolean }>`
   width: 100%;
   padding: 32px 42px;
   background: linear-gradient(90deg, #343333, #484848, #282828);
@@ -47,6 +47,10 @@ const HeaderStyles = styled.header<{ burgerVisability: boolean }>`
     }
   }
   @media ${devices.tablet} {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
     nav {
       position: relative;
       flex-direction: column;
@@ -82,12 +86,8 @@ const HeaderStyles = styled.header<{ burgerVisability: boolean }>`
       }
     }
     ${(props) =>
-      props.burgerVisability &&
+      props.burgervisability &&
       css`
-        position: fixed;
-        z-index: 100;
-        left: 0;
-        top: 0;
         width: 100%;
         height: 100px;
         height: 100dvh;

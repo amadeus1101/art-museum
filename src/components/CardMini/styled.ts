@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../../constants/theme';
+import { devices } from '../../constants/devices';
 
 const MiniCardStyles = styled.div`
   max-width: 416px;
@@ -12,37 +13,26 @@ const MiniCardStyles = styled.div`
   .icon {
     width: 80px;
     height: 80px;
+    margin-right: 8px;
     img {
       width: 100%;
       height: 100%;
     }
   }
-  .content {
-    margin: 0 16px;
-    display: flex;
-    flex-direction: column;
-    p {
-      width: 219px;
-      font-family: 'InterMedium';
-      font-size: 17px;
-      color: ${theme.colors.black};
-      line-height: 26px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+  @media ${devices.laptop} {
+    padding: 0 8px;
+    .icon {
+      width: 60px;
+      height: 60px;
+      margin-right: 4px;
     }
-    span {
-      font-family: 'InterRegular';
-      font-size: 15px;
-      color: ${theme.colors.orange};
-      line-height: 26px;
-    }
-    b {
-      margin-top: 8px;
-      font-family: 'InterBold';
-      font-size: 15px;
-      color: ${theme.colors.black};
-      line-height: 26px;
+  }
+  @media ${devices.tablet} {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 24px;
+    .icon {
+      margin-right: 12px;
     }
   }
 `;

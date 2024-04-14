@@ -7,7 +7,7 @@ import icon_favourites from '../../assets/img/icon-bookmark.png';
 const Header = () => {
   const [burgerActive, setBurgerActive] = useState(false);
   return (
-    <HeaderStyles burgerVisability={burgerActive}>
+    <HeaderStyles burgervisability={burgerActive}>
       <nav>
         <div className="logo__inner">
           <Logo icon={1} />

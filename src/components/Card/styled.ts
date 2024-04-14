@@ -14,44 +14,6 @@ const CardStyles = styled.div`
       height: 100%;
     }
   }
-  .description {
-    position: absolute;
-    bottom: -52px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 334px;
-    padding: 17px 24px;
-    display: flex;
-    align-items: center;
-    background: ${theme.colors.white};
-    .content {
-      display: flex;
-      flex-direction: column;
-      p {
-        width: 219px;
-        font-family: 'InterMedium';
-        font-size: 17px;
-        color: ${theme.colors.black};
-        line-height: 26px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      span {
-        font-family: 'InterRegular';
-        font-size: 15px;
-        color: ${theme.colors.orange};
-        line-height: 26px;
-      }
-      b {
-        margin-top: 8px;
-        font-family: 'InterBold';
-        font-size: 15px;
-        color: ${theme.colors.black};
-        line-height: 26px;
-      }
-    }
-  }
 `;
 
 export default CardStyles;

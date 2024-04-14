@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../constants/theme';
+import { devices } from '../constants/devices';
 import bookmark_icon from '../assets/img/icon-bookmark-2.png';
 
 const BookmarkStyles = styled.div`
@@ -18,6 +19,22 @@ const BookmarkStyles = styled.div`
   img {
     width: 24px;
     height: 24px;
+  }
+  @media ${devices.laptop} {
+    width: 48px;
+    height: 48px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media ${devices.tablet} {
+    width: 32px;
+    height: 32px;
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 

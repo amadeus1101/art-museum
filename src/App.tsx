@@ -5,55 +5,94 @@ import BannerText from './components/BannerText';
 import HeadlineText from './components/HeadlineText';
 import CardMini from './components/CardMini';
 import Card from './components/Card';
+import CardsContainer from './components/CardsContainer';
 import Pagination from './components/Pagination';
+import MiniCardsContainer from './components/MiniCardsContainer';
 
 function App() {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-  const arr2 = [11, 12, 13];
+  const arr = [
+    {
+      id: 0,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 1,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 2,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 3,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 4,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 5,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 6,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    }
+  ];
+  const arr2 = [
+    {
+      id: 0,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 1,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    },
+    {
+      id: 2,
+      icon: './assets/img/image-micro.png',
+      title: 'Charles V, bust length, holding a sword, facing right',
+      author: 'Giovanni Britto',
+      status: 'Public'
+    }
+  ];
   return (
     <>
       <Header />
       <BannerText content="Let's Find Some Art Here!" />
       <Input />
       <HeadlineText title="Our special gallery" subtitle="Topics for you" />
-      <div
-        style={{
-          width: '1280px',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between'
-        }}>
-        {arr2.map((el) => (
-          <Card
-            icon="./assets/img/image-micro.png"
-            title="Charles V, bust length, holding a sword, facing right"
-            author="Giovanni Britto"
-            status="Public"
-            key={el}
-          />
-        ))}
-      </div>
+      <CardsContainer cards={arr2} />
       <HeadlineText title="Our special gallery" subtitle="Topics for you" />
-      <div
-        style={{
-          width: '1280px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          columnGap: '16px',
-          rowGap: '16px'
-        }}>
-        {arr.map((el) => (
-          <CardMini
-            icon="./assets/img/image-micro.png"
-            title="Charles V, bust length, holding a sword, facing right"
-            author="Giovanni Britto"
-            status="Public"
-            key={el}
-          />
-        ))}
-      </div>
-      <Pagination />
+      <MiniCardsContainer cards={arr} />
       <Footer />
     </>
   );
