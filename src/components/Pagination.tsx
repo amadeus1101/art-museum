@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 import { theme } from '../constants/theme';
+import { devices } from '../constants/devices';
 
 const PaginationStyles = styled.div`
   width: 100%;
   max-width: 1280px;
-  margin: 80px auto 120px;
+  margin-top: 80px;
   display: flex;
   justify-content: flex-end;
   ul {
-    width: 190px;
     display: flex;
-    justify-content: space-between;
     li {
       width: 30px;
       height: 30px;
+      margin-right: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -35,6 +35,14 @@ const PaginationStyles = styled.div`
         background: ${theme.colors.white};
         border: 1px solid ${theme.colors.black};
       }
+    }
+  }
+  @media ${devices.tablet} {
+    margin-top: 60px;
+    ul li {
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
     }
   }
 `;

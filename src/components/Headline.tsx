@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../constants/theme';
+import { devices } from '../constants/devices';
 import { FC } from 'react';
 
 const HeadlineStyles = styled.div`
@@ -15,6 +16,15 @@ const HeadlineStyles = styled.div`
     font-size: 32px;
     color: ${theme.colors.black};
   }
+  @media ${devices.tablet} {
+    margin: 20px auto;
+    p {
+      font-size: 14px;
+    }
+    h4 {
+      font-size: 24px;
+    }
+  }
 `;
 
 interface IHeadlineText {
@@ -22,7 +32,7 @@ interface IHeadlineText {
   subtitle: string;
 }
 
-const HeadlineText: FC<IHeadlineText> = ({ title, subtitle }) => {
+const Headline: FC<IHeadlineText> = ({ title, subtitle }) => {
   return (
     <HeadlineStyles>
       <p>{subtitle}</p>
@@ -31,4 +41,4 @@ const HeadlineText: FC<IHeadlineText> = ({ title, subtitle }) => {
   );
 };
 
-export default HeadlineText;
+export default Headline;

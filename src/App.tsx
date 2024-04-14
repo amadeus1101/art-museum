@@ -2,12 +2,8 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Input from './components/Input';
 import BannerText from './components/BannerText';
-import HeadlineText from './components/HeadlineText';
-import CardMini from './components/CardMini';
-import Card from './components/Card';
-import CardsContainer from './components/CardsContainer';
-import Pagination from './components/Pagination';
-import MiniCardsContainer from './components/MiniCardsContainer';
+import CardsSection from './components/CardsSection';
+import GallerySection from './components/GallerySection';
 
 function App() {
   const arr = [
@@ -87,12 +83,12 @@ function App() {
   return (
     <>
       <Header />
-      <BannerText content="Let's Find Some Art Here!" />
+      <BannerText>
+        Let's Find Some <span>Art</span> Here!
+      </BannerText>
       <Input />
-      <HeadlineText title="Our special gallery" subtitle="Topics for you" />
-      <CardsContainer cards={arr2} />
-      <HeadlineText title="Our special gallery" subtitle="Topics for you" />
-      <MiniCardsContainer cards={arr} />
+      <GallerySection gallery={arr2} />
+      <CardsSection cards={arr} />
       <Footer />
     </>
   );
