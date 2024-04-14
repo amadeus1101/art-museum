@@ -14,7 +14,7 @@ const BookmarkStyles = styled.div`
   transition: 0.3s;
   &:hover {
     cursor: pointer;
-    background: rgba(251, 215, 178, 30%);
+    background: rgba(251, 215, 178, 100%);
   }
   img {
     width: 24px;

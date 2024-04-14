@@ -4,6 +4,7 @@ import Input from './components/Input';
 import BannerText from './components/BannerText';
 import CardsSection from './components/CardsSection';
 import GallerySection from './components/GallerySection';
+import Exhibit from './pages/Exhibit';
 
 function App() {
   const arr = [
@@ -83,12 +84,13 @@ function App() {
   return (
     <>
       <Header />
-      <BannerText>
+      {/* <BannerText>
         Let's Find Some <span>Art</span> Here!
       </BannerText>
       <Input />
       <GallerySection gallery={arr2} />
-      <CardsSection cards={arr} />
+      <CardsSection cards={arr} /> */}
+      <Exhibit />
       <Footer />
     </>
   );
