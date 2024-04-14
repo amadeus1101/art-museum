@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { theme } from '../../constants/theme';
+import { devices } from '../../constants/devices';
 
 const FooterStyles = styled.footer`
   width: 100%;
-  background: ${theme.colors.white};
   padding: 32px 42px;
+  display: flex;
+  justify-content: center;
+  background: ${theme.colors.white};
   .footer__container {
     max-width: 1280px;
     width: 100%;
@@ -16,6 +19,12 @@ const FooterStyles = styled.footer`
       img {
         width: 100%;
         height: 100%;
+      }
+    }
+    @media ${devices.tablet} {
+      .company {
+        width: 82px;
+        height: 30px;
       }
     }
   }

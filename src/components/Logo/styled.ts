@@ -12,6 +12,10 @@ const LogoStyles = styled.div`
     width: calc(206px * 0.75);
     height: calc(63px * 0.75);
   }
+  @media ${devices.tablet} {
+    width: 103px;
+    height: 32px;
+  }
 `;
 
 export default LogoStyles;
