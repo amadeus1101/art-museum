@@ -12,6 +12,13 @@ const CardStyles = styled.div`
     img {
       width: 100%;
       height: 100%;
+      transition: 0.3s;
+    }
+  }
+  &:hover {
+    .illustration img {
+      cursor: pointer;
+      transform: scale(0.95);
     }
   }
 `;

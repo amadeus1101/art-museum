@@ -10,6 +10,7 @@ const MiniCardStyles = styled.div`
   align-items: center;
   background: ${theme.colors.white};
   border: 1px solid #f0f1f1;
+  transition: transform 0.3s;
   .icon {
     width: 80px;
     height: 80px;
@@ -18,6 +19,9 @@ const MiniCardStyles = styled.div`
       width: 100%;
       height: 100%;
     }
+  }
+  &:hover {
+    transform: scale(1.05);
   }
   @media ${devices.laptop} {
     padding: 0 8px;
