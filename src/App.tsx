@@ -1,96 +1,24 @@
-import Footer from './components/Footer';
 import Header from './components/Header';
-import Input from './components/Input';
-import BannerText from './components/BannerText';
-import CardsSection from './components/CardsSection';
-import GallerySection from './components/GallerySection';
+import Footer from './components/Footer';
 import Exhibit from './pages/Exhibit';
+import Home from './pages/Home';
+import Favourites from './pages/Favourites';
+import GlobalStyle from './constants/GlobalStyle';
+import FontStyles from './constants/FontStyles';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const arr = [
-    {
-      id: 0,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 1,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 2,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 3,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 4,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 5,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 6,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    }
-  ];
-  const arr2 = [
-    {
-      id: 0,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 1,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    },
-    {
-      id: 2,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    }
-  ];
   return (
     <>
+      <GlobalStyle />
+      <FontStyles />
       <Header />
-      {/* <BannerText>
-        Let's Find Some <span>Art</span> Here!
-      </BannerText>
-      <Input />
-      <GallerySection gallery={arr2} />
-      <CardsSection cards={arr} /> */}
-      <Exhibit />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/exhibition" element={<Exhibit />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
       <Footer />
     </>
   );

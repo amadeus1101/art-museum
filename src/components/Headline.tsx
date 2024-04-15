@@ -4,7 +4,7 @@ import { devices } from '../constants/devices';
 import { FC } from 'react';
 
 const HeadlineStyles = styled.div`
-  margin: 40px auto;
+  margin: 120px auto 40px;
   text-align: center;
   p {
     font-family: 'LexendRegular', sans-serif;
@@ -17,6 +17,7 @@ const HeadlineStyles = styled.div`
     color: ${theme.colors.black};
   }
   @media ${devices.tablet} {
+    margin: 60px auto 20px;
     margin: 20px auto;
     p {
       font-size: 14px;

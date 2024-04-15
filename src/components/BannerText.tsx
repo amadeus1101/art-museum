@@ -12,10 +12,19 @@ const BannerText = styled.h2`
   color: ${theme.colors.black};
   span {
     color: #f17900;
+    white-space: nowrap;
+    img {
+      width: 74px;
+      height: 74px;
+    }
   }
   @media ${devices.tablet} {
     max-width: 513px;
     font-size: 48px;
+    span img {
+      width: 48px;
+      height: 48px;
+    }
   }
 `;
 

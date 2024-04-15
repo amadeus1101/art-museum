@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HeaderStyles from './styled';
+import { Link } from 'react-router-dom';
 import Logo from '../Logo';
 import icon_home from '../../assets/img/icon_home.png';
 import icon_favourites from '../../assets/img/icon-bookmark.png';
@@ -14,14 +15,14 @@ const Header = () => {
         </div>
         <div className="burger" onClick={() => setBurgerActive(!burgerActive)}></div>
         <div className="navbar">
-          <a className="home" href="#">
+          <Link to="/" onClick={() => setBurgerActive(false)}>
             <img src={icon_home} alt="home-navigation-icon" />
             <span>Home</span>
-          </a>
-          <a className="favourites" href="#">
+          </Link>
+          <Link to="/favourites" onClick={() => setBurgerActive(false)}>
             <img src={icon_favourites} alt="bookmark-navigation-icon" />
             <span>Your favourites</span>
-          </a>
+          </Link>
         </div>
       </nav>
     </HeaderStyles>
