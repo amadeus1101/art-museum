@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../constants/theme';
 import { devices } from '../constants/devices';
+import { useState } from 'react';
 
 const PaginationStyles = styled.div`
   width: 100%;
@@ -48,14 +49,22 @@ const PaginationStyles = styled.div`
 `;
 
 const Pagination = () => {
+  const pages = ['1', '2', '3', '4', '+'];
+  const [activePage, setActivePage] = useState(0);
+  const onClickPag = (num: number) => {
+    setActivePage(num);
+  };
   return (
     <PaginationStyles>
       <ul>
-        <li className="active">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>+</li>
+        {pages.map((page, index) => (
+          <li
+            className={activePage === index ? 'active' : ''}
+            key={page}
+            onClick={() => onClickPag(index)}>
+            {page}
+          </li>
+        ))}
       </ul>
     </PaginationStyles>
   );
