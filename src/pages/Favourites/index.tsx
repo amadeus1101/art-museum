@@ -25,7 +25,7 @@ const Favourites = () => {
         </span>
       </BannerText>
       <Headline subtitle="Saved for you" title="Your favourites list" />
-      <CardsSection cards={arr} />
+      {/* <CardsSection cards={arr} /> */}
     </Wrapper>
   );
 };

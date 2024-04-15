@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { devices } from '../../constants/devices';
 
-const GallerySectionWidget = styled.div`
+const GalleryWrapper = styled.div`
   width: 100%;
 `;
 
@@ -18,4 +18,4 @@ const GalleryGrid = styled.div`
   }
 `;
 
-export { GallerySectionWidget, GalleryGrid };
+export { GalleryWrapper, GalleryGrid };

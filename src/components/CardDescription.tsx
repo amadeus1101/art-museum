@@ -94,17 +94,18 @@ const CardDescStyles = styled.div<{ primary: boolean; width: number }>`
       }
     `}
 `;
-type description = {
+
+type TCardDesc = {
   title: string;
   author: string;
-  status: string;
+  status: boolean;
+  text_wid: number;
   primary: boolean;
-  title_wid: number;
 };
 
-const CardDescription: FC<description> = ({ title, author, status, primary, title_wid }) => {
+const CardDescription: FC<TCardDesc> = ({ title, author, status, text_wid, primary }) => {
   return (
-    <CardDescStyles primary={primary} width={title_wid}>
+    <CardDescStyles primary={primary} width={text_wid}>
       <div className="content">
         <p>{title}</p>
         <span>{author}</span>

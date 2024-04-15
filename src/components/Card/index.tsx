@@ -1,30 +1,29 @@
 import { FC } from 'react';
-import CardStyles from './styled';
-import default_icon from '../../assets/img/image-default.png';
-import CardDescription from '../CardDescription';
+import { CardType } from '../../constants/CardType';
+import { Link } from 'react-router-dom';
+import Bookmark from '../Bookmark';
+import default_icon from '../../assets/img/image-micro.png';
 
-interface ICard {
-  id: number;
-  icon: string;
-  title: string;
-  author: string;
-  status: string;
-}
-
-const Card: FC<ICard> = ({ id, icon, title, author, status }) => {
+const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_id }) => {
   return (
-    <CardStyles>
-      <div className="illustration">
-        <img src={default_icon} alt="artwork-illustration" />
+    <>
+      <Link to={'/exhibit/' + id}>
+        <div className="icon">
+          <img
+            src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
+            alt="artwork-illustration"
+          />
+        </div>
+      </Link>
+      <div className="card__description">
+        <div className="content">
+          <p>{title}</p>
+          <span>{artist_title}</span>
+          <b>{is_public_domain ? 'Public' : 'Private'}</b>
+        </div>
+        <Bookmark />
       </div>
-      <CardDescription
-        title={title}
-        author={author}
-        status={status}
-        primary={true}
-        title_wid={100}
-      />
-    </CardStyles>
+    </>
   );
 };
 

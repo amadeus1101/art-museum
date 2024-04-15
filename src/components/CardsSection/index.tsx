@@ -1,24 +1,20 @@
 import { FC } from 'react';
-import { CardsGrid, CardsSectionWidget } from './styled';
-import CardMini from '../CardMini';
+import { CardsGrid, CardsWrapper } from './styled';
+import { CardType } from '../../constants/CardType';
+import Card from '../Card';
+import { CardItemWrapper } from '../Card/styled';
 
-type CardNode = {
-  id: number;
-  icon: string;
-  title: string;
-  author: string;
-  status: string;
-};
-
-const CardsSection: FC<{ cards: CardNode[] }> = ({ cards }) => {
+const CardsSection: FC<{ cards: CardType[] }> = ({ cards }) => {
   return (
-    <CardsSectionWidget>
+    <CardsWrapper>
       <CardsGrid>
         {cards.map((card) => (
-          <CardMini {...card} key={card.id} />
+          <CardItemWrapper key={card.id}>
+            <Card {...card} />
+          </CardItemWrapper>
         ))}
       </CardsGrid>
-    </CardsSectionWidget>
+    </CardsWrapper>
   );
 };
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { devices } from '../../constants/devices';
 
-const CardsSectionWidget = styled.div`
+const CardsWrapper = styled.div`
   width: 100%;
 `;
 
@@ -20,4 +20,4 @@ const CardsGrid = styled.div`
   }
 `;
 
-export { CardsGrid, CardsSectionWidget };
+export { CardsGrid, CardsWrapper };
