@@ -7,13 +7,18 @@ import axios from 'axios';
 import Card from '../Card';
 
 const CardsSection = () => {
+  console.log('Cards section renderred');
   const [cards, setCards] = useState<CardType[]>([]);
   useEffect(() => {
     async function getCards() {
-      const cardsResp = await axios.get(
-        'https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=12'
-      );
-      setCards(cardsResp.data.data);
+      try {
+        const cardsResp = await axios.get(
+          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${Math.random() * 100}&limit=18`
+        );
+        setCards(cardsResp.data.data);
+      } catch (err) {
+        console.log(err);
+      }
     }
     getCards();
   }, []);

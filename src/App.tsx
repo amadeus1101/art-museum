@@ -8,6 +8,7 @@ import FontStyles from './constants/FontStyles';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
+  console.log('app rendered');
   return (
     <>
       <GlobalStyle />
@@ -15,8 +16,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="exhibit/:id" element={<Exhibit />} />
-        <Route path="favourites" element={<Favourites />} />
+        <Route path="/exhibit/:id" element={<Exhibit />} />
+        <Route path="/favourites" element={<Favourites />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

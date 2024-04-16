@@ -6,6 +6,7 @@ import GallerySection from '../../components/GallerySection';
 import Wrapper from '../../components/Wrapper';
 
 const Home = () => {
+  console.log('home renered');
   return (
     <Wrapper>
       <BannerText>

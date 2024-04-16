@@ -12,6 +12,7 @@ const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_i
           <img
             src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
             alt="artwork-illustration"
+            loading="lazy"
           />
         </div>
       </Link>

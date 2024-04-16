@@ -5,7 +5,7 @@ import { useState } from 'react';
 import bookmark_icon from '../assets/img/icon-bookmark-2.png';
 import bookmark_active from '../assets/img/bookmark-checked.png';
 
-const BookmarkStyles = styled.div<{ active: boolean }>`
+const BookmarkStyles = styled.div<{ $active?: boolean }>`
   width: 59px;
   height: 59px;
   display: flex;
@@ -15,7 +15,7 @@ const BookmarkStyles = styled.div<{ active: boolean }>`
   border-radius: 50%;
   transition: 0.3s;
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       background: #f17900;
     `}
@@ -51,7 +51,7 @@ const Bookmark = () => {
     setBookmarkActive(!bookmarkActive);
   };
   return (
-    <BookmarkStyles active={bookmarkActive} onClick={() => onClickBookmark()}>
+    <BookmarkStyles $active={bookmarkActive} onClick={() => onClickBookmark()}>
       <img src={!bookmarkActive ? bookmark_icon : bookmark_active} alt="bookmark-icon" />
     </BookmarkStyles>
   );
