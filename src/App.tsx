@@ -3,16 +3,14 @@ import Footer from './components/Footer';
 import Exhibit from './pages/Exhibit';
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
-import GlobalStyle from './constants/GlobalStyle';
-import FontStyles from './constants/FontStyles';
+import GlobalStyles from './components/GlobalStyles';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
   console.log('app rendered');
   return (
     <>
-      <GlobalStyle />
-      <FontStyles />
+      <GlobalStyles />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

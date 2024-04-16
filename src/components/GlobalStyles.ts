@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from '../constants/theme';
 import InterRegular from '../assets/fonts/Inter-Regular.ttf';
 import InterMedium from '../assets/fonts/Inter-Medium.ttf';
 import InterBold from '../assets/fonts/Inter-Bold.ttf';
@@ -6,7 +7,7 @@ import LexendRegular from '../assets/fonts/LexendDeca-Regular.ttf';
 import LexendMedium from '../assets/fonts/LexendDeca-Medium.ttf';
 import LexendBold from '../assets/fonts/LexendDeca-Bold.ttf';
 
-const FontStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'InterRegular';
   font-weight: 400;
@@ -49,6 +50,22 @@ const FontStyles = createGlobalStyle`
   font-display: swap;
   src: url(${LexendBold});
 }
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+  body {
+    background: #f5f5f5;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: ${theme.colors.white};
+  }
+  
 `;
 
-export default FontStyles;
+export default GlobalStyles;

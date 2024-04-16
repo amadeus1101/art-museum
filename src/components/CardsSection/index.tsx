@@ -3,20 +3,13 @@ import { useState, useEffect } from 'react';
 import { CardType } from '../../constants/CardType';
 import { CardsGrid, CardsWrapper } from './styled';
 import { CardItemWrapper } from '../Card/styled';
+import { CardsPlaceholder } from '../../constants/CardsPlaceholder';
 import axios from 'axios';
 import Card from '../Card';
 
 const CardsSection = () => {
   console.log('Cards section renderred');
-  const temp_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((elem) => {
-    return {
-      id: elem,
-      title: 'Loading...',
-      artist_title: 'Please wait...',
-      is_public_domain: true,
-      image_id: '#'
-    };
-  });
+
   const [cards, setCards] = useState<CardType[]>([]);
   useEffect(() => {
     async function getCards() {
@@ -40,7 +33,7 @@ const CardsSection = () => {
                 <Card {...card} />
               </CardItemWrapper>
             ))
-          : temp_arr.map((card) => (
+          : CardsPlaceholder(9).map((card) => (
               <CardItemWrapper key={card.id}>
                 <Card {...card} />
               </CardItemWrapper>

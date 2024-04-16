@@ -4,20 +4,12 @@ import { GalleryItemWrapper } from '../Card/styled';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../Card';
+import { CardsPlaceholder } from '../../constants/CardsPlaceholder';
 
 const GallerySection = () => {
   const [pages, setPages] = useState<number[]>([1, 2, 3, 4]);
   const [activePage, setActivePage] = useState(1);
   const [gallery, setGallery] = useState<CardType[]>([]);
-  const temp_arr = [1, 2, 3].map((elem) => {
-    return {
-      id: elem,
-      title: 'Loading...',
-      artist_title: 'Please wait...',
-      is_public_domain: true,
-      image_id: '#'
-    };
-  });
   const onClickPag = (page_num: number) => {
     setActivePage(page_num);
   };
@@ -43,7 +35,7 @@ const GallerySection = () => {
                 <Card {...card} />
               </GalleryItemWrapper>
             ))
-          : temp_arr.map((card) => (
+          : CardsPlaceholder(3).map((card) => (
               <GalleryItemWrapper key={card.id}>
                 <Card {...card} />
               </GalleryItemWrapper>
