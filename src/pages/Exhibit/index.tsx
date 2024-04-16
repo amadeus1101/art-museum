@@ -1,11 +1,11 @@
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { ExhibitType } from '../../constants/ExhibitType';
 import Bookmark from '../../components/Bookmark';
 import pict from '../../assets/img/image-macro.png';
 import ExhibitWidget from './styled';
 import Wrapper from '../../components/Wrapper';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { ExhibitType } from '../../constants/ExhibitType';
 
 const Exhibit = () => {
   const { id } = useParams();

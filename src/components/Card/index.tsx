@@ -1,17 +1,18 @@
 import { FC } from 'react';
 import { CardType } from '../../constants/CardType';
 import { Link } from 'react-router-dom';
+import { ImageComponent } from './ImageComponent';
 import Bookmark from '../Bookmark';
-import default_icon from '../../assets/img/image-micro.png';
+import placeholder_img from '../../assets/img/preloader-micro.png';
 
 const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_id }) => {
   return (
     <>
       <Link to={'/exhibit/' + id} className="icon">
-        <img
+        <ImageComponent
           src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
           alt="artwork-illustration"
-          loading="lazy"
+          placeholder={placeholder_img}
         />
       </Link>
       <div className="card__description">

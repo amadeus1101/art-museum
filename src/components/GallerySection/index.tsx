@@ -9,6 +9,15 @@ const GallerySection = () => {
   const [pages, setPages] = useState<number[]>([1, 2, 3, 4]);
   const [activePage, setActivePage] = useState(1);
   const [gallery, setGallery] = useState<CardType[]>([]);
+  const temp_arr = [1, 2, 3].map((elem) => {
+    return {
+      id: elem,
+      title: 'Loading...',
+      artist_title: 'Please wait...',
+      is_public_domain: true,
+      image_id: '#'
+    };
+  });
   const onClickPag = (page_num: number) => {
     setActivePage(page_num);
   };
@@ -16,7 +25,7 @@ const GallerySection = () => {
     async function getGallery() {
       try {
         const galleryResp = await axios.get(
-          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
+          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${1}&limit=3`
         );
         setGallery(galleryResp.data.data);
       } catch (err) {
@@ -28,11 +37,17 @@ const GallerySection = () => {
   return (
     <GalleryWrapper>
       <GalleryGrid>
-        {gallery.map((card) => (
-          <GalleryItemWrapper key={card.id}>
-            <Card {...card} />
-          </GalleryItemWrapper>
-        ))}
+        {gallery.length > 0
+          ? gallery.map((card) => (
+              <GalleryItemWrapper key={card.id}>
+                <Card {...card} />
+              </GalleryItemWrapper>
+            ))
+          : temp_arr.map((card) => (
+              <GalleryItemWrapper key={card.id}>
+                <Card {...card} />
+              </GalleryItemWrapper>
+            ))}
       </GalleryGrid>
       <div className="pagination">
         <ul>

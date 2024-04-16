@@ -27,6 +27,13 @@ const CardItemWrapper = styled.div`
       left: 0;
       top: 0;
       object-fit: cover;
+      &::before {
+        content: 'loading...';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
     }
   }
   .card__description {
