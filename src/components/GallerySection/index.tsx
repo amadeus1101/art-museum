@@ -4,20 +4,18 @@ import { GalleryItemWrapper } from '../Card/styled';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../Card';
-import { CardsPlaceholder } from '../../constants/CardsPlaceholder';
+import { CardsPlaceholder } from '../../utils/CardsPlaceholder';
+import { usePagination } from '../../utils/usePagination';
 
 const GallerySection = () => {
-  const [pages, setPages] = useState<number[]>([1, 2, 3, 4]);
-  const [activePage, setActivePage] = useState(1);
+  console.log('Gallery render');
+  const { activePage, pages, onClickPage } = usePagination(11);
   const [gallery, setGallery] = useState<CardType[]>([]);
-  const onClickPag = (page_num: number) => {
-    setActivePage(page_num);
-  };
   useEffect(() => {
     async function getGallery() {
       try {
         const galleryResp = await axios.get(
-          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${1}&limit=3`
+          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
         );
         setGallery(galleryResp.data.data);
       } catch (err) {
@@ -43,21 +41,14 @@ const GallerySection = () => {
       </GalleryGrid>
       <div className="pagination">
         <ul>
-          {pages.map((page, index) => (
+          {pages.map((page) => (
             <li
               className={activePage === page ? 'active' : ''}
-              onClick={() => onClickPag(page)}
+              onClick={() => onClickPage(page)}
               key={page}>
               {page}
             </li>
           ))}
-          <li
-            onClick={() => {
-              setPages((prev) => prev.map((el) => el + 4));
-              setActivePage((prev) => prev + 4);
-            }}>
-            +
-          </li>
         </ul>
       </div>
       {/* <Pagination /> */}

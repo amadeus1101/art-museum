@@ -1,9 +1,11 @@
 import InputStyles from './styled';
+import { useInput } from '../../utils/useInput';
 
 function Input() {
+  const value = useInput('');
   return (
     <InputStyles>
-      <input type="text" placeholder="Search Art, Artist, Work..." />
+      <input {...value} type="text" placeholder="Search Art, Artist, Work..." />
     </InputStyles>
   );
 }

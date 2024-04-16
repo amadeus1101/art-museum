@@ -1,4 +1,4 @@
-export const CardsPlaceholder = (count: number) => {
+export function CardsPlaceholder(count: number) {
   let arr = [];
   while (count > 0) {
     arr.push(count--);
@@ -12,4 +12,4 @@ export const CardsPlaceholder = (count: number) => {
       image_id: '#'
     };
   });
-};
+}

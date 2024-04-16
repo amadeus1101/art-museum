@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { CardType } from '../../constants/CardType';
 import { CardsGrid, CardsWrapper } from './styled';
 import { CardItemWrapper } from '../Card/styled';
-import { CardsPlaceholder } from '../../constants/CardsPlaceholder';
+import { CardsPlaceholder } from '../../utils/CardsPlaceholder';
 import axios from 'axios';
 import Card from '../Card';
 
