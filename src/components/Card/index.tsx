@@ -17,8 +17,8 @@ const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_i
       </Link>
       <div className="card__description">
         <div className="content">
-          <p>{title}</p>
-          <span>{artist_title}</span>
+          <p>{title ? title : 'Unnamed'}</p>
+          <span>{artist_title ? artist_title : 'Unknown'}</span>
           <b>{is_public_domain ? 'Public' : 'Private'}</b>
         </div>
         <Bookmark />

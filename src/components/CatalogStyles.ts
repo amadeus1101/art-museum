@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { devices } from '../../constants/devices';
+import { devices } from '../constants/devices';
 
 const CardsWrapper = styled.div`
   width: 100%;
 `;
 
-const CardsGrid = styled.div`
+const Flex = styled.div`
   width: 100%;
   margin-top: 40px;
   display: flex;
@@ -20,4 +20,4 @@ const CardsGrid = styled.div`
   }
 `;
 
-export { CardsGrid, CardsWrapper };
+export { Flex, CardsWrapper };

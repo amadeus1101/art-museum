@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
-import { devices } from '../../constants/devices';
+import { theme } from '../constants/theme';
+import { devices } from '../constants/devices';
 
 const GalleryWrapper = styled.div`
   width: 100%;
@@ -50,7 +50,7 @@ const GalleryWrapper = styled.div`
   }
 `;
 
-const GalleryGrid = styled.div`
+const Grid = styled.div`
   width: 100%;
   margin-top: 40px;
   display: grid;
@@ -63,4 +63,4 @@ const GalleryGrid = styled.div`
   }
 `;
 
-export { GalleryWrapper, GalleryGrid };
+export { GalleryWrapper, Grid };

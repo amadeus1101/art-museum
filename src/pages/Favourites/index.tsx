@@ -1,5 +1,4 @@
 import BannerText from '../../components/BannerText';
-import CardsSection from '../../components/CardsSection';
 import Headline from '../../components/Headline';
 import Wrapper from '../../components/Wrapper';
 import bookmark_big from '../../assets/img/icon-bookmark-big.png';
