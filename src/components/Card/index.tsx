@@ -7,14 +7,12 @@ import default_icon from '../../assets/img/image-micro.png';
 const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_id }) => {
   return (
     <>
-      <Link to={'/exhibit/' + id}>
-        <div className="icon">
-          <img
-            src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
-            alt="artwork-illustration"
-            loading="lazy"
-          />
-        </div>
+      <Link to={'/exhibit/' + id} className="icon">
+        <img
+          src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
+          alt="artwork-illustration"
+          loading="lazy"
+        />
       </Link>
       <div className="card__description">
         <div className="content">
