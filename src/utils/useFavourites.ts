@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CardType } from '@constants/CardType';
+import { CardType } from '../constants/CardType';
 
 export function useFavourites() {
   const [favourites, setFavourites] = useState<CardType[]>([]);

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { theme } from '../constants/theme';
-import { devices } from '../constants/devices';
-import { FC } from 'react';
+import { theme } from '../../constants/theme';
+import { devices } from '../../constants/devices';
 
-const HeadlineStyles = styled.div`
+export const HeadlineStyles = styled.div`
   margin: 120px auto 40px;
   text-align: center;
   p {
@@ -27,19 +26,3 @@ const HeadlineStyles = styled.div`
     }
   }
 `;
-
-interface IHeadlineText {
-  title: string;
-  subtitle: string;
-}
-
-const Headline: FC<IHeadlineText> = ({ title, subtitle }) => {
-  return (
-    <HeadlineStyles>
-      <p>{subtitle}</p>
-      <h4>{title}</h4>
-    </HeadlineStyles>
-  );
-};
-
-export default Headline;

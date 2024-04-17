@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { BookmarkStyles } from './styled';
 import bookmark_icon from '../../assets/img/icon-bookmark-2.png';
 import bookmark_active from '../../assets/img/bookmark-checked.png';

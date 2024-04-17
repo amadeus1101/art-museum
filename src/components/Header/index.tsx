@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import HeaderStyles from './styled';
 import { Link } from 'react-router-dom';
+import HeaderStyles from './styled';
+
 import Logo from '../Logo';
 import icon_home from '../../assets/img/icon_home.png';
 import icon_favourites from '../../assets/img/icon-bookmark.png';

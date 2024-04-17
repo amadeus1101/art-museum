@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { theme } from '../constants/theme';
 import { devices } from '../constants/devices';
+import styled from 'styled-components';
 
 const GalleryWrapper = styled.div`
   width: 100%;

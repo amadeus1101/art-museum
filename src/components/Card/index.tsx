@@ -1,11 +1,10 @@
 import { useState, FC } from 'react';
 import { Link } from 'react-router-dom';
+import { CardTypeFav } from '@constants/CardTypeFav';
+
 import { ImageComponent } from './ImageComponent';
 import Bookmark from '../Bookmark/Bookmark';
 import placeholder_img from '../../assets/img/preloader-micro.png';
-import { CardType } from '@constants/CardType';
-import { CardTypeFav } from '@constants/CardTypeFav';
-import { useFavourites } from '../../utils/useFavourites';
 
 const Card: FC<CardTypeFav> = ({
   id,

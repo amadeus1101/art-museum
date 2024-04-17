@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import styled from 'styled-components';
 import { theme } from '../constants/theme';
 import { devices } from '../constants/devices';
+
+import styled from 'styled-components';
 
 const BannerText = styled.h2`
   max-width: 684px;

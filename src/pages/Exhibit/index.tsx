@@ -1,13 +1,14 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect, FC } from 'react';
-import { ExhibitType } from '../../constants/ExhibitType';
-import Bookmark from '../../components/Bookmark/Bookmark';
-import pict from '../../assets/img/image-macro.png';
-import ExhibitWidget from './styled';
-import Wrapper from '../../components/Wrapper';
 import axios from 'axios';
+import { useState, useEffect, FC } from 'react';
+import { useParams } from 'react-router-dom';
 import { IFavourites } from '@constants/IFavourites';
+import { ExhibitType } from '@constants/ExhibitType';
+
+import Bookmark from '../../components/Bookmark/Bookmark';
 import Headline from '../../components/Headline';
+import Wrapper from '../../components/WrapperStyles';
+import ExhibitWidget from './styled';
+import pict from '../../assets/img/image-macro.png';
 
 const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
   const { id } = useParams();

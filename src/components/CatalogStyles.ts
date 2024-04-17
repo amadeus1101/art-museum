@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { devices } from '../constants/devices';
+import styled from 'styled-components';
 
 const CardsWrapper = styled.div`
   width: 100%;
