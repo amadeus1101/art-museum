@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { ExhibitType } from '../../constants/ExhibitType';
-import Bookmark from '../../components/Bookmark';
+import Bookmark from '../../components/Bookmark/Bookmark';
 import pict from '../../assets/img/image-macro.png';
 import ExhibitWidget from './styled';
 import Wrapper from '../../components/Wrapper';
 import axios from 'axios';
+import { IFavourites } from '@constants/IFavourites';
+import Headline from '../../components/Headline';
 
-const Exhibit = () => {
+const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
   const { id } = useParams();
   const [exhibit, setExhibit] = useState<ExhibitType>();
   useEffect(() => {
@@ -23,12 +25,23 @@ const Exhibit = () => {
     }
     getExhibit();
   }, []);
-  return (
+  return exhibit ? (
     <Wrapper>
       <ExhibitWidget>
         <div className="illustration">
           <div className="bookmark__wrapper">
-            <Bookmark />
+            <Bookmark
+              state={favourites?.find((elem) => elem.id === exhibit?.id) ? true : false}
+              onClickBookmark={() =>
+                callback({
+                  id: exhibit.id,
+                  title: exhibit.title,
+                  artist_title: exhibit.artist_title,
+                  is_public_domain: exhibit.is_public_domain,
+                  image_id: exhibit.image_id
+                })
+              }
+            />
           </div>
           <img
             src={`https://www.artic.edu/iiif/2/${exhibit?.image_id}/full/843,/0/default.jpg`}
@@ -68,6 +81,11 @@ const Exhibit = () => {
         </div>
       </ExhibitWidget>
     </Wrapper>
+  ) : (
+    <Headline
+      title="Loading..."
+      subtitle="Please wait. Content will be there as soon as possible;)"
+    />
   );
 };
 

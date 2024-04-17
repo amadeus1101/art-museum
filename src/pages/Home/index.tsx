@@ -8,12 +8,13 @@ import { GalleryWrapper, Grid } from '../../components/GalleryStyles';
 import { GalleryItemWrapper } from '../../components/Card/styled';
 import { CardsWrapper, Flex } from '../../components/CatalogStyles';
 import { CardItemWrapper } from '../../components/Card/styled';
-import { CardType } from '../../constants/CardType';
+import { CardType } from '@constants/CardType';
 import { CardsPlaceholder } from '../../utils/CardsPlaceholder';
 import { usePagination } from '../../utils/usePagination';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
+import { IFavourites } from '@constants/IFavourites';
 
-const Home = () => {
+const Home: FC<IFavourites> = ({ favourites, callback }) => {
   console.log('home renered');
   const { activePage, pages, onClickPage } = usePagination(10000);
   const [gallery, setGallery] = useState<CardType[]>([]);
@@ -55,17 +56,16 @@ const Home = () => {
       <Headline title="Our special gallery" subtitle="Topics for you" />
       <GalleryWrapper>
         <Grid>
-          {gallery.length > 0
-            ? gallery.map((card) => (
-                <GalleryItemWrapper key={card.id}>
-                  <Card {...card} />
-                </GalleryItemWrapper>
-              ))
-            : CardsPlaceholder(3).map((card) => (
-                <GalleryItemWrapper key={card.id}>
-                  <Card {...card} />
-                </GalleryItemWrapper>
-              ))}
+          {gallery.length > 0 &&
+            gallery.map((card) => (
+              <GalleryItemWrapper key={card.id}>
+                <Card
+                  {...card}
+                  state={favourites?.find((elem) => elem.id === card.id) ? true : false}
+                  callback={callback}
+                />
+              </GalleryItemWrapper>
+            ))}
         </Grid>
         <div className="pagination">
           <ul>
@@ -83,17 +83,16 @@ const Home = () => {
       <Headline title="Other works for you" subtitle="Here some more" />
       <CardsWrapper>
         <Flex>
-          {cards.length > 0
-            ? cards.map((card) => (
-                <CardItemWrapper key={card.id}>
-                  <Card {...card} />
-                </CardItemWrapper>
-              ))
-            : CardsPlaceholder(9).map((card) => (
-                <CardItemWrapper key={card.id}>
-                  <Card {...card} />
-                </CardItemWrapper>
-              ))}
+          {cards.length > 0 &&
+            cards.map((card) => (
+              <CardItemWrapper key={card.id}>
+                <Card
+                  {...card}
+                  state={favourites?.find((elem) => elem.id === card.id) ? true : false}
+                  callback={callback}
+                />
+              </CardItemWrapper>
+            ))}
         </Flex>
       </CardsWrapper>
     </Wrapper>

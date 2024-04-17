@@ -1,11 +1,32 @@
-import { FC } from 'react';
-import { CardType } from '../../constants/CardType';
+import { useState, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageComponent } from './ImageComponent';
-import Bookmark from '../Bookmark';
+import Bookmark from '../Bookmark/Bookmark';
 import placeholder_img from '../../assets/img/preloader-micro.png';
+import { CardType } from '@constants/CardType';
+import { CardTypeFav } from '@constants/CardTypeFav';
+import { useFavourites } from '../../utils/useFavourites';
 
-const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_id }) => {
+const Card: FC<CardTypeFav> = ({
+  id,
+  title,
+  artist_title,
+  is_public_domain,
+  image_id,
+  state,
+  callback
+}) => {
+  const [bookmarkActive, setBookmarkActive] = useState(state);
+  const onClickBookmark = () => {
+    setBookmarkActive(!bookmarkActive);
+    callback({
+      id: id,
+      title: title,
+      artist_title: artist_title,
+      is_public_domain: is_public_domain,
+      image_id: image_id
+    });
+  };
   return (
     <>
       <Link to={'/exhibit/' + id} className="icon">
@@ -21,7 +42,7 @@ const Card: FC<CardType> = ({ id, title, artist_title, is_public_domain, image_i
           <span>{artist_title ? artist_title : 'Unknown'}</span>
           <b>{is_public_domain ? 'Public' : 'Private'}</b>
         </div>
-        <Bookmark />
+        <Bookmark state={bookmarkActive} onClickBookmark={onClickBookmark} />
       </div>
     </>
   );
