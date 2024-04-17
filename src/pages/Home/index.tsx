@@ -3,7 +3,7 @@ import { useState, useEffect, FC } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
 import { usePagination } from '../../utils/usePagination';
-import { fetchCards } from '../../utils/fetchCards';
+import { preloadCards } from '../../utils/preloadCards';
 
 import { GalleryWrapper, Grid } from '../../components/GalleryStyles';
 import { GalleryItemWrapper, CardItemWrapper } from '../../components/Card/styled';
@@ -18,7 +18,9 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
   console.log('----HOME');
   const { activePage, pages, onClickPage } = usePagination(10000);
   const [gallery, setGallery] = useState<CardType[]>([]);
+  const [isGalleryLoaded, setGalleryLoaded] = useState(false);
   const [cards, setCards] = useState<CardType[]>([]);
+  const [isCardsLoaded, setCardsLoaded] = useState(false);
 
   useEffect(() => {
     async function getGallery() {
@@ -30,6 +32,7 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
           `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
         );
         setGallery(galleryResp.data.data);
+        setGalleryLoaded(true);
       } catch (err) {
         console.log('Gallery Error: ', err);
       }
@@ -44,6 +47,7 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
           `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18`
         );
         setCards(cardsResp.data.data);
+        setCardsLoaded(true);
       } catch (err) {
         console.log('Cards error: ', err);
       }
@@ -65,12 +69,21 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
       <Headline title="Our special gallery" subtitle="Topics for you" />
       <GalleryWrapper>
         <Grid>
-          {gallery.length > 0 &&
-            gallery.map((card) => (
-              <GalleryItemWrapper key={card.id}>
-                <Card {...card} state={checkCardState(card)} callback={callback} />
-              </GalleryItemWrapper>
-            ))}
+          {isGalleryLoaded
+            ? gallery.map((card) => (
+                <GalleryItemWrapper key={card.id}>
+                  <Card {...card} state={checkCardState(card)} callback={callback} />
+                </GalleryItemWrapper>
+              ))
+            : preloadCards(3).map((card) => (
+                <GalleryItemWrapper key={card.id}>
+                  <Card
+                    {...card}
+                    state={false}
+                    callback={() => alert('Wait until cards will be loaded.')}
+                  />
+                </GalleryItemWrapper>
+              ))}
         </Grid>
         <div className="pagination">
           <ul>
@@ -88,16 +101,25 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
       <Headline title="Other works for you" subtitle="Here some more" />
       <CardsWrapper>
         <Flex>
-          {cards.length > 0 &&
-            cards.map((card) => (
-              <CardItemWrapper key={card.id}>
-                <Card
-                  {...card}
-                  state={favourites?.find((elem) => elem.id === card.id) ? true : false}
-                  callback={callback}
-                />
-              </CardItemWrapper>
-            ))}
+          {isCardsLoaded
+            ? cards.map((card) => (
+                <CardItemWrapper key={card.id}>
+                  <Card
+                    {...card}
+                    state={favourites?.find((elem) => elem.id === card.id) ? true : false}
+                    callback={callback}
+                  />
+                </CardItemWrapper>
+              ))
+            : preloadCards(6).map((card) => (
+                <GalleryItemWrapper key={card.id}>
+                  <Card
+                    {...card}
+                    state={false}
+                    callback={() => alert('Wait until cards will be loaded.')}
+                  />
+                </GalleryItemWrapper>
+              ))}
         </Flex>
       </CardsWrapper>
     </Wrapper>

@@ -8,21 +8,21 @@ import { CardsWrapper, Flex } from '../../components/CatalogStyles';
 import { CardItemWrapper } from '../../components/Card/styled';
 import Card from '../../components/Card';
 import InputStyles from './styled';
+import Headline from '../../components/Headline';
 
 const Input: FC<IFavourites> = ({ favourites, callback }) => {
   console.log('------INPUT');
-
   const [searchedCards, setSearchedCards] = useState<CardType[]>([]);
   const { value, onChange } = useInput('');
   useEffect(() => {
     const timer = setTimeout(() => {
       if (value.length > 2) {
         fetchCards(
-          `https://api.artic.edu/api/v1/artworks/search?q=${value.toLocaleLowerCase()}&fields=id&limit=10`
+          `https://api.artic.edu/api/v1/artworks/search?q=${value.toLocaleLowerCase()}&fields=id&limit=6`
         )
           .then((res) => {
             return fetchCards(
-              `https://api.artic.edu/api/v1/artworks?ids=${res.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&page=${Math.random() * 100}&limit=6`
+              `https://api.artic.edu/api/v1/artworks?ids=${res.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&limit=6`
             );
           })
           .then((resp) => setSearchedCards(resp.data))
