@@ -47,6 +47,12 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
     }
     getCards();
   }, []);
+
+  // useEffect(() => {
+  //   console.log('new fav');
+  //   setCards((prev) => [...prev]);
+  //   setGallery((prev) => [...prev]);
+  // }, [favourites]);
   return (
     <Wrapper>
       <BannerText>

@@ -2,18 +2,13 @@ import BannerText from '../../components/BannerText';
 import Headline from '../../components/Headline';
 import Wrapper from '../../components/Wrapper';
 import bookmark_big from '../../assets/img/icon-bookmark-big.png';
+import { CardsWrapper, Flex } from '../../components/CatalogStyles';
+import { CardItemWrapper } from '../../components/Card/styled';
+import Card from '../../components/Card';
+import { FC } from 'react';
+import { IFavourites } from '@constants/IFavourites';
 
-const Favourites = () => {
-  const temp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  const arr = temp.map((elem) => {
-    return {
-      id: elem,
-      icon: './assets/img/image-micro.png',
-      title: 'Charles V, bust length, holding a sword, facing right',
-      author: 'Giovanni Britto',
-      status: 'Public'
-    };
-  });
+const Favourites: FC<IFavourites> = ({ favourites, callback }) => {
   return (
     <Wrapper>
       <BannerText>
@@ -24,7 +19,16 @@ const Favourites = () => {
         </span>
       </BannerText>
       <Headline subtitle="Saved for you" title="Your favourites list" />
-      {/* <CardsSection cards={arr} /> */}
+      <CardsWrapper>
+        <Flex>
+          {favourites &&
+            favourites.map((card) => (
+              <CardItemWrapper key={card.id}>
+                <Card {...card} state={true} callback={callback} />
+              </CardItemWrapper>
+            ))}
+        </Flex>
+      </CardsWrapper>
     </Wrapper>
   );
 };

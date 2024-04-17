@@ -35,7 +35,10 @@ function App() {
           path="/exhibit/:id"
           element={<Exhibit favourites={favourites} callback={onChangeFavourites} />}
         />
-        <Route path="/favourites" element={<Favourites />} />
+        <Route
+          path="/favourites"
+          element={<Favourites favourites={favourites} callback={onChangeFavourites} />}
+        />
         <Route path="*" element={<Home favourites={favourites} callback={onChangeFavourites} />} />
       </Routes>
       <Footer />
