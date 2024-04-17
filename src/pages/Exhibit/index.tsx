@@ -7,8 +7,9 @@ import { ExhibitType } from '@constants/ExhibitType';
 import Bookmark from '../../components/Bookmark/Bookmark';
 import Headline from '../../components/Headline';
 import Wrapper from '../../components/WrapperStyles';
+import { ImageComponent } from '../../components/Card/ImageComponent';
 import ExhibitWidget from './styled';
-import pict from '../../assets/img/image-macro.png';
+import pict from '../../assets/img/preloader-micro.png';
 
 const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
   const { id } = useParams();
@@ -44,9 +45,10 @@ const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
               }
             />
           </div>
-          <img
+          <ImageComponent
             src={`https://www.artic.edu/iiif/2/${exhibit?.image_id}/full/843,/0/default.jpg`}
             alt="exhibition-illustration"
+            placeholder={pict}
           />
         </div>
         <div className="content">

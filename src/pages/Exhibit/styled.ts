@@ -8,16 +8,29 @@ const ExhibitWidget = styled.div`
   justify-content: space-between;
   .illustration {
     width: 497px;
+    aspect-ratio: 497/570;
     margin-right: 32px;
     position: relative;
     img {
-      max-width: 100%;
-      aspect-ratio: 497/570;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
     }
     .bookmark__wrapper {
+      z-index: 90;
       position: absolute;
       right: 16px;
       top: 16px;
+      img {
+        width: auto;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
   .content {

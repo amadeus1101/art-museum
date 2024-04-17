@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC, Suspense } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
 import { usePagination } from '../../utils/usePagination';
@@ -13,28 +13,26 @@ import BannerText from '../../components/BannerText';
 import Headline from '../../components/Headline';
 import Card from '../../components/Card';
 import Wrapper from '../../components/WrapperStyles';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 const Home: FC<IFavourites> = ({ favourites, callback }) => {
   console.log('----HOME');
   const { activePage, pages, onClickPage } = usePagination(10000);
   const [gallery, setGallery] = useState<CardType[]>([]);
-  const [isGalleryLoaded, setGalleryLoaded] = useState(false);
   const [cards, setCards] = useState<CardType[]>([]);
-  const [isCardsLoaded, setCardsLoaded] = useState(false);
 
   useEffect(() => {
     async function getGallery() {
+      // fetchCards(
+      //   `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
+      // ).then((res) => setGallery(res.data));
       try {
-        // fetchCards(
-        //   `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
-        // ).then((res) => setGallery(res.data));
         const galleryResp = await axios.get(
           `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
         );
         setGallery(galleryResp.data.data);
-        setGalleryLoaded(true);
       } catch (err) {
-        console.log('Gallery Error: ', err);
+        throw new Error(String(err));
       }
     }
     getGallery();
@@ -47,7 +45,6 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
           `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18`
         );
         setCards(cardsResp.data.data);
-        setCardsLoaded(true);
       } catch (err) {
         console.log('Cards error: ', err);
       }
@@ -67,59 +64,56 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
       </BannerText>
       <Input favourites={favourites} callback={callback} />
       <Headline title="Our special gallery" subtitle="Topics for you" />
-      <GalleryWrapper>
-        <Grid>
-          {isGalleryLoaded
-            ? gallery.map((card) => (
+      <ErrorBoundary fallback={<h1>Error</h1>}>
+        <GalleryWrapper>
+          <Suspense
+            fallback={
+              <Grid>
+                {preloadCards(3).map((card) => (
+                  <GalleryItemWrapper key={card.id}>
+                    <Card
+                      {...card}
+                      state={false}
+                      callback={() => alert('Its not loaded yet, wait')}
+                    />
+                  </GalleryItemWrapper>
+                ))}
+              </Grid>
+            }>
+            <Grid>
+              {gallery.map((card) => (
                 <GalleryItemWrapper key={card.id}>
                   <Card {...card} state={checkCardState(card)} callback={callback} />
                 </GalleryItemWrapper>
-              ))
-            : preloadCards(3).map((card) => (
-                <GalleryItemWrapper key={card.id}>
-                  <Card
-                    {...card}
-                    state={false}
-                    callback={() => alert('Wait until cards will be loaded.')}
-                  />
-                </GalleryItemWrapper>
               ))}
-        </Grid>
-        <div className="pagination">
-          <ul>
-            {pages.map((page) => (
-              <li
-                className={activePage === page ? 'active' : ''}
-                onClick={() => onClickPage(page)}
-                key={page}>
-                {page}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </GalleryWrapper>
+            </Grid>
+          </Suspense>
+          <div className="pagination">
+            <ul>
+              {pages.map((page) => (
+                <li
+                  className={activePage === page ? 'active' : ''}
+                  onClick={() => onClickPage(page)}
+                  key={page}>
+                  {page}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </GalleryWrapper>
+      </ErrorBoundary>
       <Headline title="Other works for you" subtitle="Here some more" />
       <CardsWrapper>
         <Flex>
-          {isCardsLoaded
-            ? cards.map((card) => (
-                <CardItemWrapper key={card.id}>
-                  <Card
-                    {...card}
-                    state={favourites?.find((elem) => elem.id === card.id) ? true : false}
-                    callback={callback}
-                  />
-                </CardItemWrapper>
-              ))
-            : preloadCards(6).map((card) => (
-                <GalleryItemWrapper key={card.id}>
-                  <Card
-                    {...card}
-                    state={false}
-                    callback={() => alert('Wait until cards will be loaded.')}
-                  />
-                </GalleryItemWrapper>
-              ))}
+          {cards.map((card) => (
+            <CardItemWrapper key={card.id}>
+              <Card
+                {...card}
+                state={favourites?.find((elem) => elem.id === card.id) ? true : false}
+                callback={callback}
+              />
+            </CardItemWrapper>
+          ))}
         </Flex>
       </CardsWrapper>
     </Wrapper>
