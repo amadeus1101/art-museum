@@ -47,29 +47,29 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
     }
     getCards();
   }, []);
-
+  const checkCardState = (current: CardType) => {
+    if (favourites) {
+      if (favourites.find((elem) => elem.id === current.id)) return true;
+    }
+    return false;
+  };
   // useEffect(() => {
-  //   console.log('new fav');
-  //   setCards((prev) => [...prev]);
-  //   setGallery((prev) => [...prev]);
+  //   setCards(gallery);
+  //   setGallery(gallery);
   // }, [favourites]);
   return (
     <Wrapper>
       <BannerText>
         Let's Find Some <span>Art</span> Here!
       </BannerText>
-      <Input />
+      <Input favourites={favourites} callback={callback} />
       <Headline title="Our special gallery" subtitle="Topics for you" />
       <GalleryWrapper>
         <Grid>
           {gallery.length > 0 &&
             gallery.map((card) => (
               <GalleryItemWrapper key={card.id}>
-                <Card
-                  {...card}
-                  state={favourites?.find((elem) => elem.id === card.id) ? true : false}
-                  callback={callback}
-                />
+                <Card {...card} state={checkCardState(card)} callback={callback} />
               </GalleryItemWrapper>
             ))}
         </Grid>
