@@ -12,7 +12,9 @@ const Header = () => {
     <HeaderStyles $active={burgerActive}>
       <nav>
         <div className="logo__inner">
-          <Logo icon={1} />
+          <Link to="/" onClick={() => setBurgerActive(false)}>
+            <Logo icon={1} />
+          </Link>
         </div>
         <div className="burger" onClick={() => setBurgerActive(!burgerActive)}></div>
         <div className="navbar">
