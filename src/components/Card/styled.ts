@@ -117,9 +117,10 @@ const CardItemWrapper = styled.div`
     }
   }
   @media ${devices.mobileL} {
+    padding: 10px;
     .card__description {
       .content {
-        max-width: 195px;
+        max-width: 175px;
       }
     }
   }

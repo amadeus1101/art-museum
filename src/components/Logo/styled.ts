@@ -13,7 +13,7 @@ export const LogoStyles = styled.div`
     height: calc(63px * 0.75);
   }
   @media ${devices.tablet} {
-    width: 103px;
-    height: 32px;
+    width: calc(206px * 0.65);
+    height: calc(63px * 0.65);
   }
 `;

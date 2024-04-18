@@ -11,9 +11,9 @@ export const ArtworkWidget = styled.div`
     aspect-ratio: 497/570;
     margin-right: 32px;
     position: relative;
+    overflow: hidden;
     img {
       width: 100%;
-      height: 100%;
       position: absolute;
       left: 0;
       top: 0;
@@ -65,7 +65,6 @@ export const ArtworkWidget = styled.div`
         margin-top: 32px;
         li {
           margin-top: 16px;
-          display: flex;
           p {
             margin-right: 10px;
             font-family: 'LexendRegular', sans-serif;

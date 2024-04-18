@@ -24,7 +24,7 @@ const Header = () => {
           </Link>
           <Link to="/favourites" onClick={() => setBurgerActive(false)}>
             <img src={icon_favourites} alt="bookmark-navigation-icon" />
-            <span>Your favourites</span>
+            <span>Your Favourites</span>
           </Link>
         </div>
       </nav>

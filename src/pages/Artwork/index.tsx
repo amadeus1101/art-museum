@@ -96,6 +96,7 @@ const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
                 <span>{exhibit.exhibition_history}</span>
               </li>
               <li>
+                <p>Status:</p>
                 <span>{exhibit.is_public_domain ? 'Public' : 'Private'}</span>
               </li>
             </ul>

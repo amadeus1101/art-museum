@@ -15,9 +15,11 @@ export const HeadlineStyles = styled.div`
     font-size: 32px;
     color: ${theme.colors.black};
   }
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     margin: 60px auto 20px;
-    margin: 20px auto;
+  }
+  @media ${devices.tablet} {
+    margin: 30px auto;
     p {
       font-size: 14px;
     }
