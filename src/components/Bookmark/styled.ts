@@ -35,6 +35,15 @@ export const BookmarkStyles = styled.div<{ $active?: boolean }>`
   @media ${devices.tablet} {
     width: 32px;
     height: 32px;
+    &:hover {
+      background: #f9f9f9;
+      user-select: none;
+      ${(props) =>
+        props.$active &&
+        css`
+          background: #f17900;
+        `}
+    }
     img {
       width: 16px;
       height: 16px;

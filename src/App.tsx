@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home favourites={favourites} callback={onChangeFavourites} />} />
         <Route
-          path="/exhibit/:id"
+          path="/artwork/:id"
           element={<Artwork favourites={favourites} callback={onChangeFavourites} />}
         />
         <Route

@@ -28,7 +28,7 @@ const Card: FC<CardTypeFav> = ({
   };
   return (
     <>
-      <Link to={'/exhibit/' + id} className="icon">
+      <Link to={'/artwork/' + id} className="icon">
         <ImageComponent
           src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
           alt="artwork-illustration"
