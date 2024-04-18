@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { devices } from '../../constants/devices';
 import { theme } from '../../constants/theme';
 
-const HeaderStyles = styled.header<{ $active?: boolean }>`
+export const HeaderStyles = styled.header<{ $active?: boolean }>`
   width: 100%;
   padding: 32px 42px;
   background: linear-gradient(90deg, #343333, #484848, #282828);
@@ -136,5 +136,3 @@ const HeaderStyles = styled.header<{ $active?: boolean }>`
       `}
   }
 `;
-
-export default HeaderStyles;

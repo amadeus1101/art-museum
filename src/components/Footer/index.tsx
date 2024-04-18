@@ -1,5 +1,4 @@
-import FooterStyles from './styled';
-
+import { FooterStyles } from './styled';
 import Logo from '../Logo';
 import company_logo from '../../assets/img/logo-modsen.png';
 

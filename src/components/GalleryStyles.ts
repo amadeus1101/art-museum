@@ -1,4 +1,3 @@
-import { theme } from '../constants/theme';
 import { devices } from '../constants/devices';
 import styled from 'styled-components';
 

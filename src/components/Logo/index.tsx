@@ -1,6 +1,6 @@
 import logo_museum_1 from '../../assets/img/logo-museum.png';
 import logo_museum_2 from '../../assets/img/logo-museum-2.png';
-import LogoStyles from './styled';
+import { LogoStyles } from './styled';
 import { FC } from 'react';
 
 const Logo: FC<{ icon: number }> = ({ icon }) => {

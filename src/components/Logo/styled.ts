@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { devices } from '../../constants/devices';
 
-const LogoStyles = styled.div`
+export const LogoStyles = styled.div`
   width: 206px;
   height: 63px;
   img {
@@ -17,5 +17,3 @@ const LogoStyles = styled.div`
     height: 32px;
   }
 `;
-
-export default LogoStyles;

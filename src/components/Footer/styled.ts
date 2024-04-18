@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../constants/theme';
 import { devices } from '../../constants/devices';
 
-const FooterStyles = styled.footer`
+export const FooterStyles = styled.footer`
   width: 100%;
   padding: 32px 42px;
   display: flex;
@@ -29,5 +29,3 @@ const FooterStyles = styled.footer`
     }
   }
 `;
-
-export default FooterStyles;

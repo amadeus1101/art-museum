@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderStyles from './styled';
+import { HeaderStyles } from './styled';
 
 import Logo from '../Logo';
 import icon_home from '../../assets/img/icon_home.png';

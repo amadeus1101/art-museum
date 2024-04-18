@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../constants/theme';
 
-const InputStyles = styled.div`
+export const InputStyles = styled.div`
   max-width: 762px;
   margin: 0 auto;
   display: flex;
@@ -40,5 +40,3 @@ const InputStyles = styled.div`
     }
   }
 `;
-
-export default InputStyles;

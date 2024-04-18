@@ -7,7 +7,7 @@ import LexendRegular from '../assets/fonts/LexendDeca-Regular.ttf';
 import LexendMedium from '../assets/fonts/LexendDeca-Medium.ttf';
 import LexendBold from '../assets/fonts/LexendDeca-Bold.ttf';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'InterRegular';
   font-weight: 400;
@@ -67,5 +67,3 @@ const GlobalStyles = createGlobalStyle`
   }
   
 `;
-
-export default GlobalStyles;

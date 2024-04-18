@@ -7,7 +7,7 @@ import { fetchCards } from '../../utils/fetchCards';
 import { CardsWrapper, Flex } from '../../components/CatalogStyles';
 import { CardItemWrapper } from '../../components/Card/styled';
 import Card from '../../components/Card';
-import InputStyles from './styled';
+import { InputStyles } from './styled';
 import Headline from '../../components/Headline';
 
 const Input: FC<IFavourites> = ({ favourites, callback }) => {

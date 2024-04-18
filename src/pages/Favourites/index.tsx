@@ -4,7 +4,7 @@ import { IFavourites } from '@constants/IFavourites';
 import Card from '../../components/Card';
 import BannerText from '../../components/BannerText';
 import Headline from '../../components/Headline';
-import Wrapper from '../../components/WrapperStyles';
+import { Wrapper } from '../../components/WrapperStyles';
 import { CardsWrapper, Flex } from '../../components/CatalogStyles';
 import { CardItemWrapper } from '../../components/Card/styled';
 import bookmark_big from '../../assets/img/icon-bookmark-big.png';

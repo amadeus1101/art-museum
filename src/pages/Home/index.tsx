@@ -3,10 +3,10 @@ import { IFavourites } from '@constants/IFavourites';
 
 import Input from '../../components/Input';
 import BannerText from '../../components/BannerText';
-import Wrapper from '../../components/WrapperStyles';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import Gallery from '../../components/Gallery';
 import Catalog from '../../components/Catalog';
+import { Wrapper } from '../../components/WrapperStyles';
 
 const Home: FC<IFavourites> = ({ favourites, callback }) => {
   console.log('----HOME');

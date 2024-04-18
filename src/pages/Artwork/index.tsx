@@ -6,7 +6,7 @@ import { ExhibitType } from '@constants/ExhibitType';
 
 import Bookmark from '../../components/Bookmark/Bookmark';
 import Headline from '../../components/Headline';
-import Wrapper from '../../components/WrapperStyles';
+import { Wrapper } from '../../components/WrapperStyles';
 import { ImageComponent } from '../../components/Card/ImageComponent';
 import { ArtworkWidget } from './styled';
 import pict from '../../assets/img/preloader-micro.png';
