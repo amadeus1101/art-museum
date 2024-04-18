@@ -2,7 +2,7 @@ import { theme } from '../../constants/theme';
 import { devices } from '../../constants/devices';
 import styled from 'styled-components';
 
-const ExhibitWidget = styled.div`
+export const ArtworkWidget = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -130,5 +130,3 @@ const ExhibitWidget = styled.div`
     }
   }
 `;
-
-export default ExhibitWidget;

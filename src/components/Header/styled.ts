@@ -48,7 +48,7 @@ const HeaderStyles = styled.header<{ $active?: boolean }>`
   }
   @media ${devices.tablet} {
     padding: 12px 22px;
-    position: fixed;
+    position: sticky;
     z-index: 100;
     left: 0;
     top: 0;

@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 import { IFavourites } from '@constants/IFavourites';
 
 import Input from '../../components/Input';
@@ -17,14 +17,10 @@ const Home: FC<IFavourites> = ({ favourites, callback }) => {
       </BannerText>
       <Input favourites={favourites} callback={callback} />
       <ErrorBoundary fallback={<h1>Error</h1>}>
-        <Suspense fallback={<h1>Loading gallery...</h1>}>
-          <Gallery favourites={favourites} callback={callback} />
-        </Suspense>
+        <Gallery favourites={favourites} callback={callback} />
       </ErrorBoundary>
       <ErrorBoundary fallback={<h1>Error</h1>}>
-        <Suspense fallback={<h1>Loading gallery...</h1>}>
-          <Catalog favourites={favourites} callback={callback} />
-        </Suspense>
+        <Catalog favourites={favourites} callback={callback} />
       </ErrorBoundary>
     </Wrapper>
   );

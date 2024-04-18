@@ -8,32 +8,51 @@ import Bookmark from '../../components/Bookmark/Bookmark';
 import Headline from '../../components/Headline';
 import Wrapper from '../../components/WrapperStyles';
 import { ImageComponent } from '../../components/Card/ImageComponent';
-import ExhibitWidget from './styled';
+import { ArtworkWidget } from './styled';
 import pict from '../../assets/img/preloader-micro.png';
 
-const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
+const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
+  const [exhibit, setExhibit] = useState<ExhibitType>({
+    id: 0,
+    title: 'Loading...',
+    artist_title: 'Please wait',
+    image_id: pict,
+    is_public_domain: false,
+    credit_line: '...',
+    date_start: 0,
+    date_end: 0,
+    dimensions: '...',
+    exhibition_history: '...',
+    place_of_origin: '...'
+  });
+  const [error, setError] = useState<any>(null);
   const { id } = useParams();
-  const [exhibit, setExhibit] = useState<ExhibitType>();
   useEffect(() => {
-    async function getExhibit() {
-      try {
-        const exhibitResp = await axios.get(
-          `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,is_public_domain,image_id,place_of_origin,dimensions,credit_line,exhibition_history,date_start,date_end`
-        );
-        setExhibit(exhibitResp.data.data);
-      } catch (err) {
-        console.log('Error', err);
-      }
-    }
-    getExhibit();
+    fetch(
+      `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,is_public_domain,image_id,place_of_origin,dimensions,credit_line,exhibition_history,date_start,date_end`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setExhibit(json.data);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, []);
-  return exhibit ? (
+  if (error)
+    return (
+      <Headline
+        title="Cannot get artwork you choosed, try again"
+        subtitle="UPS!!! Something gone wrong;("
+      />
+    );
+  return (
     <Wrapper>
-      <ExhibitWidget>
+      <ArtworkWidget>
         <div className="illustration">
           <div className="bookmark__wrapper">
             <Bookmark
-              state={favourites?.find((elem) => elem.id === exhibit?.id) ? true : false}
+              state={favourites?.find((elem) => elem.id === exhibit.id) ? true : false}
               onClickBookmark={() =>
                 callback({
                   id: exhibit.id,
@@ -46,50 +65,45 @@ const Exhibit: FC<IFavourites> = ({ favourites, callback }) => {
             />
           </div>
           <ImageComponent
-            src={`https://www.artic.edu/iiif/2/${exhibit?.image_id}/full/843,/0/default.jpg`}
+            src={`https://www.artic.edu/iiif/2/${exhibit.image_id}/full/843,/0/default.jpg`}
             alt="exhibition-illustration"
             placeholder={pict}
           />
         </div>
         <div className="content">
           <div className="legend">
-            <h4>{exhibit?.title}</h4>
-            <p>{exhibit?.artist_title}</p>
-            <b>{exhibit?.date_start + '-' + exhibit?.date_end}</b>
+            <h4>{exhibit.title}</h4>
+            <p>{exhibit.artist_title}</p>
+            <b>{exhibit.date_end}</b>
           </div>
           <div className="overview">
             <h4>Overview</h4>
             <ul>
               <li>
                 <p>Artist nationality:</p>
-                <span>{exhibit?.place_of_origin}</span>
+                <span>{exhibit.place_of_origin}</span>
               </li>
               <li>
                 <p>Dimensions: Sheet:</p>
-                <span>{exhibit?.dimensions}</span>
+                <span>{exhibit.dimensions}</span>
               </li>
               <li>
                 <p>Credit Line:</p>
-                <span>{exhibit?.credit_line}</span>
+                <span>{exhibit.credit_line}</span>
               </li>
               <li>
                 <p>Repository:</p>
-                <span>{exhibit?.exhibition_history}</span>
+                <span>{exhibit.exhibition_history}</span>
               </li>
               <li>
-                <span>{exhibit?.is_public_domain ? 'Public' : 'Private'}</span>
+                <span>{exhibit.is_public_domain ? 'Public' : 'Private'}</span>
               </li>
             </ul>
           </div>
         </div>
-      </ExhibitWidget>
+      </ArtworkWidget>
     </Wrapper>
-  ) : (
-    <Headline
-      title="Loading..."
-      subtitle="Please wait. Content will be there as soon as possible;)"
-    />
   );
 };
 
-export default Exhibit;
+export default Artwork;

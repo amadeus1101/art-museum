@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
@@ -8,29 +7,39 @@ import { GalleryWrapper, Grid } from './GalleryStyles';
 import { GalleryItemWrapper } from './Card/styled';
 import Headline from './Headline';
 import Card from './Card';
+import GalleryPlaceholder from './GalleryPlaceholder';
+import Pagination from './Pagination';
 
 const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
   const [gallery, setGallery] = useState<CardType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<any>(null);
   const { activePage, pages, onClickPage } = usePagination(10000);
 
   useEffect(() => {
-    async function getGallery() {
-      try {
-        setIsLoading(true);
-        const galleryResp = await axios.get(
-          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
-        );
-        setGallery(galleryResp.data.data);
-        setIsLoading(false);
-      } catch (err) {
-        console.log('ahhgrrr...');
-      }
-    }
-    getGallery();
+    setLoading(true);
+    fetch(
+      `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setGallery(json.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
   }, [activePage]);
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (loading) return <GalleryPlaceholder />;
+  if (error)
+    return (
+      <Headline
+        title="Cannot load gallery, try again"
+        subtitle="Something gone wrong, we are sorry;("
+      />
+    );
 
   return (
     <GalleryWrapper>
@@ -46,18 +55,7 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
           </GalleryItemWrapper>
         ))}
       </Grid>
-      <div className="pagination">
-        <ul>
-          {pages.map((page) => (
-            <li
-              className={activePage === page ? 'active' : ''}
-              onClick={() => onClickPage(page)}
-              key={page}>
-              {page}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Pagination activePage={activePage} pages={pages} onClickPage={onClickPage} />
     </GalleryWrapper>
   );
 };

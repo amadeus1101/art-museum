@@ -5,7 +5,7 @@ import GlobalStyles from './components/GlobalStyles';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Exhibit from './pages/Exhibit';
+import Artwork from './pages/Artwork';
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
 
@@ -34,7 +34,7 @@ function App() {
         <Route path="/" element={<Home favourites={favourites} callback={onChangeFavourites} />} />
         <Route
           path="/exhibit/:id"
-          element={<Exhibit favourites={favourites} callback={onChangeFavourites} />}
+          element={<Artwork favourites={favourites} callback={onChangeFavourites} />}
         />
         <Route
           path="/favourites"

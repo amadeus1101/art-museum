@@ -7,23 +7,36 @@ import { CardsWrapper, Flex } from './CatalogStyles';
 import { CardItemWrapper } from './Card/styled';
 import Headline from './Headline';
 import Card from './Card';
+import CatalogPlaceholder from './CatalogPlaceholder';
 
 const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
   const [cards, setCards] = useState<CardType[]>([]);
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<any>(null);
   useEffect(() => {
-    async function getCards() {
-      try {
-        const cardsResp = await axios.get(
-          `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18`
-        );
-        setCards(cardsResp.data.data);
-      } catch (err) {
-        console.log('Cards error: ', err);
-      }
-    }
-    getCards();
+    setLoading(true);
+    fetch(
+      `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setCards(json.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) return <CatalogPlaceholder />;
+  if (error)
+    return (
+      <Headline
+        title="Cannot load catalog, try again"
+        subtitle="Something gone wrong, we are really sorry;("
+      />
+    );
   return (
     <CardsWrapper>
       <Headline title="Other works for you" subtitle="Here some more" />
