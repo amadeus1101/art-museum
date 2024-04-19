@@ -7,7 +7,7 @@ type TCardsChange = {
 const sortArray = ['Id', 'Title', 'Artist'];
 
 const Sort: FC<TCardsChange> = ({ sort }) => {
-  const [activeParam, setActiveParam] = useState('None');
+  const [activeParam, setActiveParam] = useState('Default');
   const [isSortOpened, setSortOpened] = useState(false);
 
   const onChangeSortParams = (param: number) => {
