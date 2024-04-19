@@ -9,7 +9,7 @@ export const Flex = styled.div`
   flex-wrap: wrap;
   column-gap: 16px;
   row-gap: 16px;
-  overflow: hidden;
+  overflow-x: hidden;
   @media ${devices.tablet} {
     margin-top: 20px;
     column-gap: 6px;

@@ -44,9 +44,8 @@ const CardItemWrapper = styled.div`
     .content {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      max-width: 210px;
       p {
-        max-width: 210px;
         font-family: 'InterMedium';
         font-size: 17px;
         color: ${theme.colors.black};
@@ -56,7 +55,6 @@ const CardItemWrapper = styled.div`
         text-overflow: ellipsis;
       }
       span {
-        max-width: 210px;
         font-family: 'InterRegular';
         font-size: 15px;
         color: ${theme.colors.orange};
@@ -109,6 +107,7 @@ const CardItemWrapper = styled.div`
     }
     .card__description {
       .content {
+        max-width: 240px;
         span,
         b {
           font-size: 10px;
@@ -210,11 +209,10 @@ const GalleryItemWrapper = styled.div`
   }
   @media ${devices.tablet} {
     .card__description {
-      padding: 8px;
+      padding: 8px 12px;
       .content {
-        max-width: 120px;
         p {
-          font-size: 12px;
+          font-size: 13px;
           line-height: 20px;
         }
         span,
@@ -225,20 +223,6 @@ const GalleryItemWrapper = styled.div`
         b {
           margin-top: 4px;
         }
-      }
-    }
-  }
-  @media (max-width: 565px) {
-    .card__description {
-      .content {
-        max-width: 90px;
-      }
-    }
-  }
-  @media ${devices.mobileL} {
-    .card__description {
-      .content {
-        max-width: 60px;
       }
     }
   }

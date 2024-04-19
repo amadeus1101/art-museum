@@ -36,13 +36,11 @@ const Card: FC<CardTypeFav> = ({
         />
       </Link>
       <div className="card__description">
-        <Link to={'/artwork/' + id} style={{ width: '100%' }}>
-          <div className="content">
-            <p>{title ? title : 'Unnamed'}</p>
-            <span>{artist_title ? artist_title : 'Unknown'}</span>
-            <b>{is_public_domain ? 'Public' : 'Private'}</b>
-          </div>
-        </Link>
+        <div className="content">
+          <p>{title ? title : 'Unnamed'}</p>
+          <span>{artist_title ? artist_title : 'Unknown'}</span>
+          <b>{is_public_domain ? 'Public' : 'Private'}</b>
+        </div>
         <Bookmark state={bookmarkActive} onClickBookmark={onClickBookmark} />
       </div>
     </>
