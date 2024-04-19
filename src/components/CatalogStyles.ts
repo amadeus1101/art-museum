@@ -1,11 +1,7 @@
 import { devices } from '../constants/devices';
 import styled from 'styled-components';
 
-const CardsWrapper = styled.div`
-  width: 100%;
-`;
-
-const Flex = styled.div`
+export const Flex = styled.div`
   width: 100%;
   margin-top: 40px;
   display: flex;
@@ -19,5 +15,3 @@ const Flex = styled.div`
     row-gap: 6px;
   }
 `;
-
-export { Flex, CardsWrapper };

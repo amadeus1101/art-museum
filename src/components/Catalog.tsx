@@ -1,18 +1,24 @@
-import axios from 'axios';
 import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
+import { sortCards } from '../utils/sortCards';
 
-import { CardsWrapper, Flex } from './CatalogStyles';
-import { CardItemWrapper } from './Card/styled';
 import Headline from './Headline';
 import Card from './Card';
 import CatalogPlaceholder from './CatalogPlaceholder';
+import Sort from './Sort';
+import { Flex } from './CatalogStyles';
+import { CardItemWrapper } from './Card/styled';
 
 const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
   const [cards, setCards] = useState<CardType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+
+  const onClickSort = (cond: number) => {
+    setCards((prev) => sortCards([...prev], cond));
+  };
+
   useEffect(() => {
     setLoading(true);
     fetch(
@@ -38,8 +44,9 @@ const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
       />
     );
   return (
-    <CardsWrapper>
+    <>
       <Headline title="Other works for you" subtitle="Here some more" />
+      <Sort sort={onClickSort} />
       <Flex>
         {cards.map((card) => (
           <CardItemWrapper key={card.id}>
@@ -51,7 +58,7 @@ const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
           </CardItemWrapper>
         ))}
       </Flex>
-    </CardsWrapper>
+    </>
   );
 };
 

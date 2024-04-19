@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import BannerText from '../../components/BannerText';
 import Headline from '../../components/Headline';
 import { Wrapper } from '../../components/WrapperStyles';
-import { CardsWrapper, Flex } from '../../components/CatalogStyles';
+import { Flex } from '../../components/CatalogStyles';
 import { CardItemWrapper } from '../../components/Card/styled';
 import bookmark_big from '../../assets/img/icon-bookmark-big.png';
 
@@ -20,16 +20,14 @@ const Favourites: FC<IFavourites> = ({ favourites, callback }) => {
         </span>
       </BannerText>
       <Headline subtitle="Saved for you" title="Your favourites list" />
-      <CardsWrapper>
-        <Flex>
-          {favourites &&
-            favourites.map((card) => (
-              <CardItemWrapper key={card.id}>
-                <Card {...card} state={true} callback={callback} />
-              </CardItemWrapper>
-            ))}
-        </Flex>
-      </CardsWrapper>
+      <Flex>
+        {favourites &&
+          favourites.map((card) => (
+            <CardItemWrapper key={card.id}>
+              <Card {...card} state={true} callback={callback} />
+            </CardItemWrapper>
+          ))}
+      </Flex>
     </Wrapper>
   );
 };
