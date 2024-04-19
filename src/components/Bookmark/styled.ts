@@ -5,6 +5,7 @@ import { devices } from '../../constants/devices';
 export const BookmarkStyles = styled.div<{ $active?: boolean }>`
   width: 59px;
   height: 59px;
+  aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
