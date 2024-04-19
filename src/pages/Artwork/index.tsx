@@ -28,16 +28,18 @@ const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
   const [error, setError] = useState<any>(null);
   const { id } = useParams();
   useEffect(() => {
-    fetch(
-      `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,is_public_domain,image_id,place_of_origin,dimensions,credit_line,exhibition_history,date_start,date_end`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setExhibit(json.data);
-      })
-      .catch((err) => {
-        setError(err);
-      });
+    if (id && Number(id))
+      fetch(
+        `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,is_public_domain,image_id,place_of_origin,dimensions,credit_line,exhibition_history,date_start,date_end`
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          setExhibit(json.data);
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    else setError('Cannot get the information via URI');
   }, []);
   if (error)
     return (

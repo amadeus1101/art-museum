@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import Artwork from './pages/Artwork';
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
+import ErrorBoundary from './components/ErrorBoundary';
+import Headline from './components/Headline';
 
 function App() {
   console.log('--APP');
@@ -34,7 +36,17 @@ function App() {
         <Route path="/" element={<Home favourites={favourites} callback={onChangeFavourites} />} />
         <Route
           path="/artwork/:id"
-          element={<Artwork favourites={favourites} callback={onChangeFavourites} />}
+          element={
+            <ErrorBoundary
+              fallback={
+                <Headline
+                  title="Error, bad URL"
+                  subtitle="Something gone wrong. Cannot get fetch data for artwork"
+                />
+              }>
+              <Artwork favourites={favourites} callback={onChangeFavourites} />
+            </ErrorBoundary>
+          }
         />
         <Route
           path="/favourites"
