@@ -11,15 +11,13 @@ const CardItemWrapper = styled.div`
   align-items: center;
   background: ${theme.colors.white};
   border: 1px solid #f0f1f1;
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.05);
-  }
+  transition: 0.3s;
   .icon {
     width: 80px;
     aspect-ratio: 1 / 1;
     margin-right: 16px;
     position: relative;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;
@@ -27,12 +25,9 @@ const CardItemWrapper = styled.div`
       left: 0;
       top: 0;
       object-fit: cover;
-      &::before {
-        content: 'loading...';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.3);
       }
     }
   }
@@ -144,7 +139,7 @@ const GalleryItemWrapper = styled.div`
       object-fit: cover;
     }
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
   }
   .card__description {
