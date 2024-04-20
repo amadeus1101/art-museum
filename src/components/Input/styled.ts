@@ -1,11 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../constants/theme';
 
-export const InputStyles = styled.div`
+export const InputStyles = styled.div<{ $primary?: boolean }>`
   max-width: 762px;
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
+  label {
+    font-family: 'InterRegular';
+    font-size: 14px;
+    color: red;
+  }
   input,
   .loader,
   .error {
@@ -23,5 +29,10 @@ export const InputStyles = styled.div`
     &:focus {
       outline: none;
     }
+    ${(props) =>
+      props.$primary &&
+      css`
+        border: 1px solid red;
+      `}
   }
 `;

@@ -11,7 +11,7 @@ import { InputStyles } from './styled';
 
 const Input: FC<IFavourites> = ({ favourites, callback }) => {
   //console.log('------INPUT');
-  const { inputValue, searchResult, onTyping, loading, error } = useInput('');
+  const { inputValue, searchResult, isQueryValid, onTyping, loading, error } = useInput('');
   if (error)
     return (
       <Headline title="Something gone wrong..." subtitle="API or our server working with errors" />
@@ -39,7 +39,13 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
   }
   return (
     <>
-      <InputStyles>
+      <InputStyles $primary={!isQueryValid}>
+        {!isQueryValid && (
+          <label>
+            Does not match the conditions! Only letters and backspaces, more than 2 and less than 30
+            characters!
+          </label>
+        )}
         <input
           value={inputValue}
           onChange={onTyping}
