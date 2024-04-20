@@ -6,7 +6,9 @@ export const InputStyles = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  input {
+  input,
+  .loader,
+  .error {
     width: 100%;
     padding: 24px 16px;
     text-align: left;
@@ -16,27 +18,10 @@ export const InputStyles = styled.div`
     background: rgba(57, 57, 57, 5%);
     border-radius: 16px;
     border: none;
+  }
+  input {
     &:focus {
       outline: none;
-    }
-  }
-  .sorting {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    ul {
-      margin-top: 40px;
-      display: flex;
-      li {
-        padding: 8px 24px;
-        font-family: 'InterRegular';
-        font-size: 14px;
-        color: ${theme.colors.orange};
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      }
     }
   }
 `;

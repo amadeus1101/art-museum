@@ -1,4 +1,3 @@
-import { CardType } from '@constants/CardType';
 import default_img from '../assets/img/preloader-micro.png';
 
 export function preloadCards(count: number) {

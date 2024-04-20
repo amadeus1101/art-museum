@@ -4,7 +4,7 @@ import { PaginationWrapper } from './styled';
 interface IPagination {
   activePage: string;
   pages: string[];
-  onClickPage: (obj: string) => void;
+  onClickPage: (obj: string) => void | null;
 }
 
 const Pagination: FC<IPagination> = ({ activePage, pages, onClickPage }) => {
