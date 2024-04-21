@@ -1,11 +1,7 @@
 import { devices } from '../../constants/devices';
 import styled from 'styled-components';
 
-const GalleryWrapper = styled.div`
-  width: 100%;
-`;
-
-const Grid = styled.div`
+export const Grid = styled.div`
   width: 100%;
   margin-top: 40px;
   display: grid;
@@ -17,5 +13,3 @@ const Grid = styled.div`
     column-gap: 8px;
   }
 `;
-
-export { GalleryWrapper, Grid };

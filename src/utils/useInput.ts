@@ -17,7 +17,7 @@ export function useInput(initialValue: string) {
         setQueryValid(true);
         setSearchResult([]);
       } else {
-        if (inputValue.match(/^[0-9a-zA-Z]{1,20}[0-9a-zA-Z\s]{0,20}$/)) {
+        if (inputValue.match(/^[0-9a-zA-Z]{3,20}[0-9a-zA-Z\s]{0,20}$/)) {
           setQueryValid(true);
           setLoading(true);
           fetch(

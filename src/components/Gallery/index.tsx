@@ -7,14 +7,14 @@ import GalleryPlaceholder from './placeholder';
 import Headline from '../Headline';
 import Card from '../Card';
 import Pagination from '../Pagination';
-import { GalleryWrapper, Grid } from './styled';
+import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 
 const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
   const [gallery, setGallery] = useState<CardType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
-  const { activePage, pages, onClickPage } = usePagination(9);
+  const { activePage, pages, onClickPage } = usePagination(1000);
 
   useEffect(() => {
     setLoading(true);
@@ -42,7 +42,7 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
     );
 
   return (
-    <GalleryWrapper>
+    <>
       <Headline title="Our special gallery" subtitle="Topics for you" />
       <Grid>
         {gallery.map((card) => (
@@ -56,7 +56,7 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
         ))}
       </Grid>
       <Pagination activePage={activePage} pages={pages} onClickPage={onClickPage} />
-    </GalleryWrapper>
+    </>
   );
 };
 

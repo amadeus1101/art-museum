@@ -1,6 +1,6 @@
 import { preloadCards } from '../../utils/preloadCards';
 
-import { GalleryWrapper, Grid } from './styled';
+import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 import Headline from '../Headline';
 import Card from '../Card';
@@ -14,7 +14,7 @@ type TGalPlaceholder = {
 const GalleryPlaceholder: FC<TGalPlaceholder> = ({ fakepages }) => {
   const placeholder = preloadCards(3);
   return (
-    <GalleryWrapper>
+    <>
       <Headline title="Loading..." subtitle="Please wait" />
       <Grid style={{ opacity: 0.5 }}>
         {placeholder.map((card) => (
@@ -24,7 +24,7 @@ const GalleryPlaceholder: FC<TGalPlaceholder> = ({ fakepages }) => {
         ))}
       </Grid>
       <PaginationPlaceholder _pages={fakepages} />
-    </GalleryWrapper>
+    </>
   );
 };
 
