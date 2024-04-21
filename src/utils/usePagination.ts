@@ -10,9 +10,8 @@ export function usePagination(limit: number) {
       if (last + 3 < limit) {
         setPages(['<', String(last + 1), String(last + 2), String(last + 3), '>']);
       } else {
-        const end = limit - last + 1;
         const tmp = [];
-        for (let i = 0; i < end; i++) tmp.push(String(last + i + 1));
+        for (let i = last; i < limit; i++) tmp.push(String(i + 1));
         setPages(['<', ...tmp]);
       }
     } else {
@@ -27,17 +26,42 @@ export function usePagination(limit: number) {
             '>'
           ]);
         } else {
-          const start = Number(pages[pages.length - 2]) - 3;
           const tmp = [];
-          for (let i = 0; i < start; i++) tmp.push(String(i + 1));
+          for (let i = 0; i < first; i++) tmp.push(String(i + 1));
           setPages([...tmp, '>']);
         }
       } else {
-        // if (page === pages[1]) {
-        //   console.log('move back -2');
-        // } else if (page === pages[pages.length - 2]) {
-        //   console.log('move forward +2');
-        // }
+        if (page === pages[pages.length - 2]) {
+          const last = Number(pages[pages.length - 2]);
+          if (Number(page) + 2 < limit) {
+            setPages([
+              '<',
+              page,
+              String(last + 1),
+              String(last + 2),
+              last + 3 === limit ? String(last + 3) : '>'
+            ]);
+          } else if (pages[pages.length - 1] === '>') {
+            const tmp = [];
+            for (let i = last; i < limit + 1; i++) tmp.push(String(i));
+            setPages(['<', ...tmp]);
+          }
+        } else if (page === pages[1]) {
+          const first = Number(pages[1]);
+          if (Number(page) - 2 > 1) {
+            setPages([
+              first - 3 === 1 ? '1' : '<',
+              String(first - 2),
+              String(first - 1),
+              page,
+              '>'
+            ]);
+          } else if (pages[0] === '<') {
+            const tmp = [];
+            for (let i = 0; i < first; i++) tmp.push(String(i + 1));
+            setPages([...tmp, '>']);
+          }
+        }
         setActivePage(page);
       }
     }

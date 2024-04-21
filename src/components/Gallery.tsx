@@ -14,7 +14,7 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
   const [gallery, setGallery] = useState<CardType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
-  const { activePage, pages, onClickPage } = usePagination(10000);
+  const { activePage, pages, onClickPage } = usePagination(9);
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +32,7 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
       });
   }, [activePage]);
 
-  if (loading) return <GalleryPlaceholder />;
+  if (loading) return <GalleryPlaceholder fakepages={pages} />;
   if (error)
     return (
       <Headline

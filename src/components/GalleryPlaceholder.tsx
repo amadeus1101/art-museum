@@ -4,8 +4,14 @@ import { GalleryWrapper, Grid } from './GalleryStyles';
 import { GalleryItemWrapper } from './Card/styled';
 import Headline from './Headline';
 import Card from './Card';
+import { PaginationPlaceholder } from './Pagination/placeholder';
+import { FC } from 'react';
 
-const GalleryPlaceholder = () => {
+type TGalPlaceholder = {
+  fakepages: string[];
+};
+
+const GalleryPlaceholder: FC<TGalPlaceholder> = ({ fakepages }) => {
   const placeholder = preloadCards(3);
   return (
     <GalleryWrapper>
@@ -17,6 +23,7 @@ const GalleryPlaceholder = () => {
           </GalleryItemWrapper>
         ))}
       </Grid>
+      <PaginationPlaceholder _pages={fakepages} />
     </GalleryWrapper>
   );
 };
