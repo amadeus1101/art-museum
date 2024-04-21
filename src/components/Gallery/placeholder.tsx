@@ -1,10 +1,10 @@
-import { preloadCards } from '../utils/preloadCards';
+import { preloadCards } from '../../utils/preloadCards';
 
-import { GalleryWrapper, Grid } from './GalleryStyles';
-import { GalleryItemWrapper } from './Card/styled';
-import Headline from './Headline';
-import Card from './Card';
-import { PaginationPlaceholder } from './Pagination/placeholder';
+import { GalleryWrapper, Grid } from './styled';
+import { GalleryItemWrapper } from '../Card/styled';
+import Headline from '../Headline';
+import Card from '../Card';
+import { PaginationPlaceholder } from '../Pagination/placeholder';
 import { FC } from 'react';
 
 type TGalPlaceholder = {
@@ -16,7 +16,7 @@ const GalleryPlaceholder: FC<TGalPlaceholder> = ({ fakepages }) => {
   return (
     <GalleryWrapper>
       <Headline title="Loading..." subtitle="Please wait" />
-      <Grid>
+      <Grid style={{ opacity: 0.5 }}>
         {placeholder.map((card) => (
           <GalleryItemWrapper key={card.id}>
             <Card {...card} state={false} callback={() => null} />

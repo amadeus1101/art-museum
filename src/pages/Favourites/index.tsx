@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import BannerText from '../../components/BannerText';
 import Headline from '../../components/Headline';
 import { Wrapper } from '../../components/WrapperStyles';
-import { Flex } from '../../components/CatalogStyles';
+import { Flex } from '../../components/Catalog/styled';
 import { CardItemWrapper } from '../../components/Card/styled';
 import bookmark_big from '../../assets/img/icon-bookmark-big.png';
 

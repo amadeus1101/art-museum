@@ -1,14 +1,14 @@
 import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
-import { usePagination } from '../utils/usePagination';
+import { usePagination } from '../../utils/usePagination';
 
-import { GalleryWrapper, Grid } from './GalleryStyles';
-import { GalleryItemWrapper } from './Card/styled';
-import Headline from './Headline';
-import Card from './Card';
-import GalleryPlaceholder from './GalleryPlaceholder';
-import Pagination from './Pagination';
+import GalleryPlaceholder from './placeholder';
+import Headline from '../Headline';
+import Card from '../Card';
+import Pagination from '../Pagination';
+import { GalleryWrapper, Grid } from './styled';
+import { GalleryItemWrapper } from '../Card/styled';
 
 const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
   const [gallery, setGallery] = useState<CardType[]>([]);

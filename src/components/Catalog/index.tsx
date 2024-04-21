@@ -1,14 +1,14 @@
 import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
-import { sortCards } from '../utils/sortCards';
+import { sortCards } from '../../utils/sortCards';
 
-import Headline from './Headline';
-import Card from './Card';
-import CatalogPlaceholder from './CatalogPlaceholder';
-import Sort from './Sort';
-import { Flex } from './CatalogStyles';
-import { CardItemWrapper } from './Card/styled';
+import CatalogPlaceholder from './placeholder';
+import Headline from '../Headline';
+import Card from '../Card';
+import Sort from '../Sort';
+import { Flex } from './styled';
+import { CardItemWrapper } from '../Card/styled';
 
 const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
   const [cards, setCards] = useState<CardType[]>([]);

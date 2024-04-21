@@ -1,4 +1,4 @@
-import { devices } from '../constants/devices';
+import { devices } from '../../constants/devices';
 import styled from 'styled-components';
 
 const GalleryWrapper = styled.div`

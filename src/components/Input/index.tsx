@@ -5,7 +5,7 @@ import { useInput } from '../../utils/useInput';
 
 import Card from '../../components/Card';
 import Headline from '../../components/Headline';
-import { Flex } from '../../components/CatalogStyles';
+import { Flex } from '../Catalog/styled';
 import { CardItemWrapper } from '../../components/Card/styled';
 import { InputStyles } from './styled';
 
