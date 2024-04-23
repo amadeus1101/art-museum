@@ -1,8 +1,8 @@
 {
 	"name": "react-museum",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "",
-	"main": "index.js",
+	"main": "index.jsx",
 	"scripts": {
 		"start": "webpack serve  --hot --open",
 		"build": "webpack --config webpack.config.js --mode development",
@@ -11,7 +11,7 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"@eslint/js": "^9.1.1",
 		"axios": "^1.6.8",
