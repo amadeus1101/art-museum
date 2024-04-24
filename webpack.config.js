@@ -11,6 +11,8 @@ module.exports = {
 	devServer: {
 		hot: true,
 		port: '5000',
+		
+		historyApiFallback: true,
 		static: {
 			directory: path.join(__dirname, 'public'),
 		},
@@ -21,6 +23,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.[hash].js',
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CardType } from './constants/CardType';
 import { GlobalStyles } from './components/GlobalStyles';
+import {useLocalStorage} from "./utils/useLocalStorage"
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,22 +13,8 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Headline from './components/Headline';
 
 function App() {
-  console.log('--APP');
-  const [favourites, setFavourites] = useState<CardType[]>([]);
-  const onChangeFavourites = (obj: CardType) => {
-    if (favourites?.find((elem) => elem.id === obj.id)) {
-      setFavourites((prev) => prev?.filter((el) => el.id !== obj.id));
-    } else {
-      setFavourites((prev) => (prev ? [...prev, obj] : [obj]));
-    }
-  };
-  useEffect(() => {
-    const data = localStorage.getItem('favourites');
-    if (data) setFavourites(JSON.parse(data));
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('favourites', JSON.stringify(favourites));
-  }, [favourites]);
+  //console.log('--APP');
+  const {favourites, onChangeFavourites} = useLocalStorage();
   return (
     <>
       <GlobalStyles />
