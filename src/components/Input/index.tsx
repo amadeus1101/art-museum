@@ -18,6 +18,7 @@ import Headline from '../../components/Headline';
 import { Flex } from '../Catalog/styled';
 import { CardItemWrapper } from '../../components/Card/styled';
 import { InputStyles } from './styled';
+import search_icon from '../../assets/img/icon-search.png';
 
 interface IValues {
 	query: string;
@@ -45,10 +46,8 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 	if (loading) {
 		const placeholder = preloadCards(6);
 		return (
-			<>
-				<InputStyles>
-					<div className="loader">Loading... {inputValue}</div>
-				</InputStyles>
+			<InputStyles $isloading={loading}>
+				<div className="loader">Loading... {inputValue}</div>
 				<Flex>
 					{placeholder.map((card) => (
 						<CardItemWrapper key={card.id}>
@@ -62,11 +61,11 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 						</CardItemWrapper>
 					))}
 				</Flex>
-			</>
+			</InputStyles>
 		);
 	}
 	return (
-		<>
+		<InputStyles $isloading={!loading}>
 			<Formik
 				initialValues={{
 					query: '',
@@ -84,26 +83,13 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 				validationSchema={QuerySchema}
 			>
 				<Form>
-					<label htmlFor="firstName">Search</label>
+					<ErrorMessage name="query" component="label" />
 					<Field name="query" placeholder="Search Art, Artist, Work..." />
-					<button type="submit">Submit</button>
-					<ErrorMessage name="query" component="div" />
+					<button type="submit">
+						<img src={search_icon} alt="search-icon-form" />
+					</button>
 				</Form>
 			</Formik>
-			<InputStyles $primary={!isQueryValid}>
-				{!isQueryValid && (
-					<label>
-						Does not match the conditions! Only letters and backspaces, more
-						than 2 and less than 30 characters!
-					</label>
-				)}
-				<input
-					value={inputValue}
-					onChange={onTyping}
-					type="text"
-					placeholder="Search Art, Artist, Work..."
-				/>
-			</InputStyles>
 			<Flex>
 				{searchResult.map((card) => (
 					<CardItemWrapper key={card.id}>
@@ -117,7 +103,7 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 					</CardItemWrapper>
 				))}
 			</Flex>
-		</>
+		</InputStyles>
 	);
 };
 
