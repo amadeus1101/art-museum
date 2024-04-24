@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { IFavourites } from '@constants/IFavourites';
+import { CardType } from '@constants/CardType';
 import { preloadCards } from '../../utils/preloadCards';
 import { useInput } from '../../utils/useInput';
 import {
@@ -33,9 +34,9 @@ const QuerySchema = Yup.object().shape({
 });
 
 const Input: FC<IFavourites> = ({ favourites, callback }) => {
-	//console.log('------INPUT');
-	const { inputValue, searchResult, isQueryValid, onTyping, loading, error } =
-		useInput('');
+	const [searchResult, setSearchResult] = useState<CardType[]>([]);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<any>(null);
 	if (error)
 		return (
 			<Headline
@@ -43,29 +44,8 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 				subtitle="API or our server working with errors"
 			/>
 		);
-	if (loading) {
-		const placeholder = preloadCards(6);
-		return (
-			<InputStyles $isloading={loading}>
-				<div className="loader">Loading... {inputValue}</div>
-				<Flex>
-					{placeholder.map((card) => (
-						<CardItemWrapper key={card.id}>
-							<Card
-								{...card}
-								state={
-									favourites?.find((elem) => elem.id === card.id) ? true : false
-								}
-								callback={callback}
-							/>
-						</CardItemWrapper>
-					))}
-				</Flex>
-			</InputStyles>
-		);
-	}
 	return (
-		<InputStyles $isloading={!loading}>
+		<InputStyles $isloading={loading}>
 			<Formik
 				initialValues={{
 					query: '',
@@ -74,11 +54,27 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 					values: IValues,
 					{ setSubmitting }: FormikHelpers<IValues>
 				) => {
-					console.log(values);
-					// setTimeout(() => {
-					// 	alert(JSON.stringify(values, null, 2));
-					// 	setSubmitting(false);
-					// }, 500);
+					setTimeout(() => {
+						fetch(
+							`https://api.artic.edu/api/v1/artworks/search?q=${values.query.toLocaleLowerCase()}&limit=9`
+						)
+							.then((queryPromise) => queryPromise.json())
+							.then((queryResp) =>
+								fetch(
+									`https://api.artic.edu/api/v1/artworks?ids=${queryResp.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&limit=9`
+								)
+							)
+							.then((resultPromise) => resultPromise.json())
+							.then((resultResp) => {
+								setSearchResult(resultResp.data);
+								setLoading(false);
+							})
+							.catch((err) => {
+								console.log('ERR2: ', err);
+								setError(err);
+								setLoading(true);
+							});
+					}, 500);
 				}}
 				validationSchema={QuerySchema}
 			>
