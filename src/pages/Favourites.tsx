@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { IFavourites } from '@constants/IFavourites';
 
-import Card from '../../components/Card';
-import BannerText from '../../components/BannerText';
-import Headline from '../../components/Headline';
-import { Wrapper } from '../../components/WrapperStyles';
-import { Flex } from '../../components/Catalog/styled';
-import { CardItemWrapper } from '../../components/Card/styled';
-import bookmark_big from '../../assets/img/icon-bookmark-big.png';
+import Card from '../components/Card';
+import BannerText from '../components/BannerText';
+import Headline from '../components/Headline';
+import { Wrapper } from '../components/WrapperStyles';
+import { Flex } from '../components/Catalog/styled';
+import { CardItemWrapper } from '../components/Card/styled';
+import bookmark_big from '../assets/img/icon-bookmark-big.png';
 
 const Favourites: FC<IFavourites> = ({ favourites, callback }) => {
   return (

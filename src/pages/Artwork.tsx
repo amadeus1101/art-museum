@@ -3,14 +3,14 @@ import { useState, useEffect, FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { IFavourites } from '@constants/IFavourites';
 import { ExhibitType } from '@constants/ExhibitType';
-import { fetchData } from '../../utils/fetchData';
+import { fetchData } from '../utils/fetchData';
 
-import Bookmark from '../../components/Bookmark/Bookmark';
-import Headline from '../../components/Headline';
-import { Wrapper } from '../../components/WrapperStyles';
-import { ImageComponent } from '../../components/Card/ImageComponent';
-import { ArtworkWidget } from './styled';
-import pict from '../../assets/img/preloader-micro.png';
+import Bookmark from '../components/Bookmark/Bookmark';
+import Headline from '../components/Headline';
+import { Wrapper } from '../components/WrapperStyles';
+import { ImageComponent } from '../components/Card/ImageComponent';
+import { ArtworkWrapper } from '../components/ArtworkWrapper';
+import pict from '../assets/img/preloader-micro.png';
 
 const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
 	const [exhibit, setExhibit] = useState<ExhibitType>({
@@ -50,7 +50,7 @@ const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
 		);
 	return (
 		<Wrapper>
-			<ArtworkWidget>
+			<ArtworkWrapper>
 				<div className="illustration">
 					<div className="bookmark__wrapper">
 						<Bookmark
@@ -108,7 +108,7 @@ const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
 						</ul>
 					</div>
 				</div>
-			</ArtworkWidget>
+			</ArtworkWrapper>
 		</Wrapper>
 	);
 };

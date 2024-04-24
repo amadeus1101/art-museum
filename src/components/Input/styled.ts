@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 export const InputStyles = styled.div<{ $isloading: boolean }>`
@@ -30,7 +30,7 @@ export const InputStyles = styled.div<{ $isloading: boolean }>`
 			text-align: left;
 			font-family: 'InterRegular';
 			font-size: 14px;
-			color: ${theme.colors.black};
+			color: ${colors.black};
 			border: none;
 			background: transparent;
 		}

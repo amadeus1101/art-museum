@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 export const HeadlineStyles = styled.div`
@@ -8,12 +8,12 @@ export const HeadlineStyles = styled.div`
   p {
     font-family: 'LexendRegular', sans-serif;
     font-size: 16px;
-    color: ${theme.colors.orange};
+    color: ${colors.orange_light};
   }
   h4 {
     font-family: 'LexendRegular', sans-serif;
     font-size: 32px;
-    color: ${theme.colors.black};
+    color: ${colors.black};
   }
   @media ${devices.laptop} {
     margin: 60px auto 20px;

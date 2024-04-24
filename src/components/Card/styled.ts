@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 const CardItemWrapper = styled.div`
@@ -9,7 +9,7 @@ const CardItemWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${theme.colors.white};
+  background: ${colors.white};
   border: 1px solid #f0f1f1;
   transition: 0.3s;
   .icon {
@@ -43,7 +43,7 @@ const CardItemWrapper = styled.div`
       p {
         font-family: 'InterMedium';
         font-size: 17px;
-        color: ${theme.colors.black};
+        color: ${colors.black};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
@@ -52,7 +52,7 @@ const CardItemWrapper = styled.div`
       span {
         font-family: 'InterRegular';
         font-size: 15px;
-        color: ${theme.colors.orange};
+        color: ${colors.orange_light};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
@@ -62,7 +62,7 @@ const CardItemWrapper = styled.div`
         margin-top: 8px;
         font-family: 'InterBold';
         font-size: 15px;
-        color: ${theme.colors.black};
+        color: ${colors.black};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
@@ -153,7 +153,7 @@ const GalleryItemWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: ${theme.colors.white};
+    background: ${colors.white};
     .content {
       max-width: 75%;
       display: flex;
@@ -161,7 +161,7 @@ const GalleryItemWrapper = styled.div`
       p {
         font-family: 'InterMedium';
         font-size: 17px;
-        color: ${theme.colors.black};
+        color: ${colors.black};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
@@ -170,7 +170,7 @@ const GalleryItemWrapper = styled.div`
       span {
         font-family: 'InterRegular';
         font-size: 15px;
-        color: ${theme.colors.orange};
+        color: ${colors.orange_light};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
@@ -180,7 +180,7 @@ const GalleryItemWrapper = styled.div`
         margin-top: 8px;
         font-family: 'InterBold';
         font-size: 15px;
-        color: ${theme.colors.black};
+        color: ${colors.black};
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;

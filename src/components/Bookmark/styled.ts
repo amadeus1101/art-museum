@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 export const BookmarkStyles = styled.div<{ $active?: boolean }>`
@@ -8,7 +8,7 @@ export const BookmarkStyles = styled.div<{ $active?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f9f9f9;
+  background: ${colors.background};
   border-radius: 50%;
   transition: 0.3s;
   ${(props) =>
@@ -36,12 +36,12 @@ export const BookmarkStyles = styled.div<{ $active?: boolean }>`
     width: 32px;
     height: 32px;
     &:hover {
-      background: #f9f9f9;
+      background: ${colors.background};
       user-select: none;
       ${(props) =>
         props.$active &&
         css`
-          background: #f17900;
+          background: ${colors.orange_dark};
         `}
     }
     img {

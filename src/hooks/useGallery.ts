@@ -5,7 +5,7 @@ import {fetchData} from "../utils/fetchData";
 export function useGallery(active: string) {
   const [gallery, setGallery] = useState<CardType[]>([]);
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<unknown>(null);
+	const [error, setError] = useState<unknown | null>(null);
 
   useEffect(() => {
 		setLoading(true);

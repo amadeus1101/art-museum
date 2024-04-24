@@ -1,8 +1,6 @@
-import { FC, useState, useEffect } from 'react';
-import { CardType } from '@constants/CardType';
+import { FC } from 'react';
 import { IFavourites } from '@constants/IFavourites';
 import { usePagination } from '../../hooks/usePagination';
-import { fetchData } from '../../utils/fetchData';
 import {useGallery} from "../../hooks/useGallery"
 
 import GalleryPlaceholder from './placeholder';
@@ -13,7 +11,8 @@ import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 
 const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
-	const { activePage, pages, onClickPage } = usePagination(11);
+	const PAGES_TOTAL = 10000;
+	const { activePage, pages, onClickPage } = usePagination(PAGES_TOTAL);
 	const {gallery, loading, error} = useGallery(activePage);
 
 	if (loading) return <GalleryPlaceholder fakepages={pages} />;

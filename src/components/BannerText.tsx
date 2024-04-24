@@ -1,4 +1,4 @@
-import { theme } from '../constants/theme';
+import { colors } from '../constants/colors';
 import { devices } from '../constants/devices';
 
 import styled from 'styled-components';
@@ -9,9 +9,9 @@ const BannerText = styled.h2`
   text-align: center;
   font-family: 'LexendBold', sans-serif;
   font-size: 64px;
-  color: ${theme.colors.black};
+  color: ${colors.black};
   span {
-    color: #f17900;
+    color: ${colors.orange_dark};
     white-space: nowrap;
     img {
       transform: translateY(12px);

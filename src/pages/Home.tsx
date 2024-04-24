@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { IFavourites } from '../../constants/IFavourites';
+import { IFavourites } from '../constants/IFavourites';
 
-import Input from '../../components/Input';
-import BannerText from '../../components/BannerText';
-import ErrorBoundary from '../../components/ErrorBoundary';
-import Catalog from '../../components/Catalog';
-import Gallery from '../../components/Gallery';
-import { Wrapper } from '../../components/WrapperStyles';
+import Input from '../components/Input';
+import BannerText from '../components/BannerText';
+import ErrorBoundary from '../components/ErrorBoundary';
+import Catalog from '../components/Catalog';
+import Gallery from '../components/Gallery';
+import { Wrapper } from '../components/WrapperStyles';
 
 const Home: FC<IFavourites> = ({ favourites, callback }) => {
 	//console.log('----HOME');

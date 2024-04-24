@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 
 export const SortContainer = styled.div`
   position: relative;
@@ -7,7 +7,7 @@ export const SortContainer = styled.div`
   align-items: center;
   font-family: 'InterRegular', sans-serif;
   font-size: 16px;
-  color: ${theme.colors.black};
+  color: ${colors.black};
   p {
     padding: 12px 0;
   }
@@ -16,8 +16,8 @@ export const SortContainer = styled.div`
     z-index: 50;
     top: 0;
     left: 75px;
-    background: #fff;
-    border: 2px solid ${theme.colors.black};
+    background: #ffffff;
+    border: 2px solid ${colors.black};
     border-radius: 10px;
     li {
       padding: 10px 30px;
@@ -31,8 +31,8 @@ export const SortContainer = styled.div`
   span {
     margin-left: 15px;
     padding: 10px 30px;
-    background: #fff;
-    border: 2px solid ${theme.colors.black};
+    background: #ffffff;
+    border: 2px solid ${colors.black};
     border-radius: 10px;
     &:hover {
       cursor: pointer;

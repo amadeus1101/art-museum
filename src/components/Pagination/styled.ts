@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 export const PaginationWrapper = styled.div`
@@ -19,21 +19,21 @@ export const PaginationWrapper = styled.div`
       align-items: center;
       font-family: 'LexendRegular', sans-serif;
       font-size: 18px;
-      color: ${theme.colors.black};
+      color: ${colors.black};
       border-radius: 4px;
       transition: 0.3s;
       &.active {
         font-family: 'LexendMedium', sans-serif;
-        color: ${theme.colors.white};
-        background: #f17900;
+        color: ${colors.white};
+        background: ${colors.orange_dark};
         &:hover {
-          background: #f17900;
+          background: ${colors.orange_dark};
         }
       }
       &:hover {
         cursor: pointer;
-        background: ${theme.colors.white};
-        border: 1px solid ${theme.colors.black};
+        background: ${colors.white};
+        border: 1px solid ${colors.black};
       }
     }
   }

@@ -30,7 +30,7 @@ const QuerySchema = Yup.object().shape({
 const Input: FC<IFavourites> = ({ favourites, callback }) => {
 	const [searchResult, setSearchResult] = useState<CardType[]>([]);
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<any>(null);
+	const [error, setError] = useState<unknown | null>(null);
 	if (error)
 		return (
 			<Headline

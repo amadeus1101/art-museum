@@ -1,8 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { CardType } from '@constants/CardType';
+import { FC } from 'react';
 import { IFavourites } from '@constants/IFavourites';
-import { sortCards } from '../../utils/sortCards';
-import { fetchData } from '../../utils/fetchData';
 import { useCards } from "../../hooks/useCards"
 
 import CatalogPlaceholder from './placeholder';
