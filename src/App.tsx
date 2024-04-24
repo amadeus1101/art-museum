@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CardType } from './constants/CardType';
 import { GlobalStyles } from './components/GlobalStyles';
-import {useLocalStorage} from "./utils/useLocalStorage"
+import {useLocalStorage} from "./hooks/useLocalStorage"
 
 import Header from './components/Header';
 import Footer from './components/Footer';

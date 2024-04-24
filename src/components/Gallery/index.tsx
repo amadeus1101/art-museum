@@ -1,8 +1,9 @@
 import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
-import { usePagination } from '../../utils/usePagination';
+import { usePagination } from '../../hooks/usePagination';
 import { fetchData } from '../../utils/fetchData';
+import {useGallery} from "../../hooks/useGallery"
 
 import GalleryPlaceholder from './placeholder';
 import Headline from '../Headline';
@@ -12,25 +13,8 @@ import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 
 const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
-	const [gallery, setGallery] = useState<CardType[]>([]);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<any>(null);
 	const { activePage, pages, onClickPage } = usePagination(11);
-
-	useEffect(() => {
-		setLoading(true);
-		fetchData(
-			`https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
-		)
-			.then((json) => {
-				setGallery(json.data);
-				setLoading(false);
-			})
-			.catch((err) => {
-				setError(err);
-				setLoading(false);
-			});
-	}, [activePage]);
+	const {gallery, loading, error} = useGallery(activePage);
 
 	if (loading) return <GalleryPlaceholder fakepages={pages} />;
 	if (error)
