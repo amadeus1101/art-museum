@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { CardType } from '@constants/CardType';
 import { IFavourites } from '@constants/IFavourites';
 import { usePagination } from '../../utils/usePagination';
+import { fetchData } from '../../utils/fetchData';
 
 import GalleryPlaceholder from './placeholder';
 import Headline from '../Headline';
@@ -18,10 +19,9 @@ const Gallery: FC<IFavourites> = ({ favourites, callback }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(
+		fetchData(
 			`https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`
 		)
-			.then((response) => response.json())
 			.then((json) => {
 				setGallery(json.data);
 				setLoading(false);

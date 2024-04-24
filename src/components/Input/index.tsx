@@ -1,18 +1,9 @@
 import { FC, useState } from 'react';
 import { IFavourites } from '@constants/IFavourites';
 import { CardType } from '@constants/CardType';
-import { preloadCards } from '../../utils/preloadCards';
-import { useInput } from '../../utils/useInput';
-import {
-	Formik,
-	FormikHelpers,
-	FormikProps,
-	Form,
-	Field,
-	FieldProps,
-	ErrorMessage,
-} from 'formik';
+import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { fetchData } from '../../utils/fetchData';
 
 import Card from '../../components/Card';
 import Headline from '../../components/Headline';
@@ -28,9 +19,12 @@ interface IValues {
 const QuerySchema = Yup.object().shape({
 	query: Yup.string()
 		.required('Required')
-		.min(2, '2 or more')
-		.max(30, 'less than 30')
-		.matches(/^[0-9a-zA-Z]{3,20}[0-9a-zA-Z\s]{0,20}$/, 'Failed regex'),
+		.min(2, 'Query should be 2 or more symbols')
+		.max(30, 'Query should be less than 30 symbols')
+		.matches(
+			/^[0-9a-zA-Z]{3,20}[0-9a-zA-Z\s]{0,20}$/,
+			'You can use only a-z,0-9 symbols and backspaces'
+		),
 });
 
 const Input: FC<IFavourites> = ({ favourites, callback }) => {
@@ -55,16 +49,14 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 					{ setSubmitting }: FormikHelpers<IValues>
 				) => {
 					setTimeout(() => {
-						fetch(
+						fetchData(
 							`https://api.artic.edu/api/v1/artworks/search?q=${values.query.toLocaleLowerCase()}&limit=9`
 						)
-							.then((queryPromise) => queryPromise.json())
 							.then((queryResp) =>
-								fetch(
+								fetchData(
 									`https://api.artic.edu/api/v1/artworks?ids=${queryResp.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&limit=9`
 								)
 							)
-							.then((resultPromise) => resultPromise.json())
 							.then((resultResp) => {
 								setSearchResult(resultResp.data);
 								setLoading(false);
