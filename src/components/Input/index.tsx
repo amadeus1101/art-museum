@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IFavourites } from '@constants/IFavourites';
+import { FavouritesType } from '@constants/FavouritesType';
 import { CardType } from '@constants/CardType';
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -27,7 +27,7 @@ const QuerySchema = Yup.object().shape({
 		),
 });
 
-const Input: FC<IFavourites> = ({ favourites, callback }) => {
+const Input: FC<FavouritesType> = ({ favourites, callback }) => {
 	const [searchResult, setSearchResult] = useState<CardType[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<unknown | null>(null);

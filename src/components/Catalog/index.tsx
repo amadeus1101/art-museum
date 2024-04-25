@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { IFavourites } from '@constants/IFavourites';
-import { useCards } from "../../hooks/useCards"
+import { FavouritesType } from '@constants/FavouritesType';
+import { CardType } from '@constants/CardType';
+import { useFetch } from '../../hooks/useFetch';
 
 import CatalogPlaceholder from './placeholder';
 import Headline from '../Headline';
@@ -9,9 +10,11 @@ import Sort from '../Sort';
 import { Flex } from './styled';
 import { CardItemWrapper } from '../Card/styled';
 
-const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
-	const {cards, loading, error, onClickSort} = useCards();
-
+const Catalog: FC<FavouritesType> = ({ favourites, callback }) => {
+	const { data, loading, error } = useFetch<CardType[]>(
+		'?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18',
+		'const'
+	);
 	if (loading) return <CatalogPlaceholder />;
 	if (error)
 		return (
@@ -23,19 +26,20 @@ const Catalog: FC<IFavourites> = ({ favourites, callback }) => {
 	return (
 		<>
 			<Headline title="Other works for you" subtitle="Here some more" />
-			<Sort sort={onClickSort} />
+			{/* <Sort sort={onClickSort} /> */}
 			<Flex>
-				{cards.map((card) => (
-					<CardItemWrapper key={card.id}>
-						<Card
-							{...card}
-							state={
-								favourites?.find((elem) => elem.id === card.id) ? true : false
-							}
-							callback={callback}
-						/>
-					</CardItemWrapper>
-				))}
+				{data &&
+					data.map((card) => (
+						<CardItemWrapper key={card.id}>
+							<Card
+								{...card}
+								state={
+									favourites?.find((elem) => elem.id === card.id) ? true : false
+								}
+								callback={callback}
+							/>
+						</CardItemWrapper>
+					))}
 			</Flex>
 		</>
 	);

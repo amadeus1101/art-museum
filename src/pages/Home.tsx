@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IFavourites } from '../constants/IFavourites';
+import { FavouritesType } from '../constants/FavouritesType';
 
 import Input from '../components/Input';
 import BannerText from '../components/BannerText';
@@ -8,7 +8,7 @@ import Catalog from '../components/Catalog';
 import Gallery from '../components/Gallery';
 import { Wrapper } from '../components/WrapperStyles';
 
-const Home: FC<IFavourites> = ({ favourites, callback }) => {
+const Home: FC<FavouritesType> = ({ favourites, callback }) => {
 	//console.log('----HOME');
 	return (
 		<Wrapper>
