@@ -1,36 +1,35 @@
 import { FC, useState } from 'react';
 import { SortContainer } from './styled';
 
-type TCardsChange = {
-  sort: (cond: number) => void;
+const sortArray = ['Default', 'Title', 'Artist'];
+type sortType = {
+	param: number;
+	changeParam: React.Dispatch<React.SetStateAction<number>>;
 };
-const sortArray = ['Id', 'Title', 'Artist'];
 
-const Sort: FC<TCardsChange> = ({ sort }) => {
-  const [activeParam, setActiveParam] = useState('Default');
-  const [isSortOpened, setSortOpened] = useState(false);
+const Sort: FC<sortType> = ({ param, changeParam }) => {
+	const [isSortOpened, setSortOpened] = useState(false);
 
-  const onChangeSortParams = (param: number) => {
-    setActiveParam(sortArray[param]);
-    sort(param + 1);
-    setSortOpened(false);
-  };
-  return (
-    <SortContainer>
-      <p>Sort by:</p>
-      {isSortOpened ? (
-        <ul>
-          {sortArray.map((elem, index) => (
-            <li onClick={() => onChangeSortParams(index)} key={elem}>
-              {elem}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <span onClick={() => setSortOpened(true)}>{activeParam}</span>
-      )}
-    </SortContainer>
-  );
+	const onChangeSortParams = (param: number) => {
+		changeParam(param);
+		setSortOpened(false);
+	};
+	return (
+		<SortContainer>
+			<p>Sort by:</p>
+			{isSortOpened ? (
+				<ul>
+					{sortArray.map((elem, index) => (
+						<li onClick={() => onChangeSortParams(index)} key={elem}>
+							{elem}
+						</li>
+					))}
+				</ul>
+			) : (
+				<span onClick={() => setSortOpened(true)}>{sortArray[param]}</span>
+			)}
+		</SortContainer>
+	);
 };
 
 export default Sort;

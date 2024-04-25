@@ -15,7 +15,7 @@ import { GalleryItemWrapper } from '../Card/styled';
 const Gallery: FC<FavouritesType> = ({ favourites, callback }) => {
 	const { activePage, pages, onClickPage } = usePagination(PAGES_TOTAL);
 	const { data, loading, error } = useFetch<CardType[]>(
-		`?fields=id,title,artist_title,is_public_domain,image_id&page=${3}&limit=3`,
+		`?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`,
 		activePage
 	);
 	if (loading) return <GalleryPlaceholder fakepages={pages} />;
