@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { IFavourites } from '@constants/IFavourites';
+import { favouritesContext } from '../store/favouritesContext';
+import { FavouritesType } from '@constants/FavouritesType';
 import { ArtworkType } from '../constants/ArtworkType';
 import { useFetch } from '../hooks/useFetch';
 
@@ -11,7 +12,10 @@ import { ImageComponent } from '../components/Card/ImageComponent';
 import { ArtworkWrapper } from '../components/ArtworkWrapper';
 import pict from '../assets/img/preloader-micro.png';
 
-const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
+const Artwork = () => {
+	const { favourites, onChangeFavourites } = useContext(
+		favouritesContext
+	) as FavouritesType;
 	const { id } = useParams();
 	const { data, loading, error } = useFetch<ArtworkType>(
 		`/${id}?fields=id,title,artist_title,is_public_domain,image_id,place_of_origin,dimensions,credit_line,exhibition_history,date_start,date_end`,
@@ -29,7 +33,7 @@ const Artwork: FC<IFavourites> = ({ favourites, callback }) => {
 									favourites?.find((elem) => elem.id === data.id) ? true : false
 								}
 								onClickBookmark={() =>
-									callback({
+									onChangeFavourites({
 										id: data.id,
 										title: data.title,
 										artist_title: data.artist_title,

@@ -1,6 +1,6 @@
 import { CardType } from './CardType';
 
-export interface FavouritesType {
+export type FavouritesType = {
 	favourites: CardType[];
-	callback: (obj: CardType) => void;
-}
+	onChangeFavourites: (obj: CardType) => void;
+};

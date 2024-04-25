@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { useState, useContext } from 'react';
+import { favouritesContext } from '../../store/favouritesContext';
 import { FavouritesType } from '@constants/FavouritesType';
 import { CardType } from '@constants/CardType';
 import { useFetch } from '../../hooks/useFetch';
@@ -11,7 +12,10 @@ import Sort from '../Sort';
 import { Flex } from './styled';
 import { CardItemWrapper } from '../Card/styled';
 
-const Catalog: FC<FavouritesType> = ({ favourites, callback }) => {
+const Catalog = () => {
+	const { favourites, onChangeFavourites } = useContext(
+		favouritesContext
+	) as FavouritesType;
 	const [sortParam, setSortParam] = useState(0);
 	const { data, loading, error } = useFetch<CardType[]>(
 		'?fields=id,title,artist_title,is_public_domain,image_id&page=2&limit=18',
@@ -38,7 +42,7 @@ const Catalog: FC<FavouritesType> = ({ favourites, callback }) => {
 								state={
 									favourites?.find((elem) => elem.id === card.id) ? true : false
 								}
-								callback={callback}
+								callback={onChangeFavourites}
 							/>
 						</CardItemWrapper>
 					))}

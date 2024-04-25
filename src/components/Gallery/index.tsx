@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { useContext } from 'react';
+import { favouritesContext } from '../../store/favouritesContext';
 import { FavouritesType } from '@constants/FavouritesType';
 import { usePagination } from '../../hooks/usePagination';
 import { useFetch } from '../../hooks/useFetch';
@@ -12,7 +13,10 @@ import Pagination from '../Pagination';
 import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 
-const Gallery: FC<FavouritesType> = ({ favourites, callback }) => {
+const Gallery = () => {
+	const { favourites, onChangeFavourites } = useContext(
+		favouritesContext
+	) as FavouritesType;
 	const { activePage, pages, onClickPage } = usePagination(PAGES_TOTAL);
 	const { data, loading, error } = useFetch<CardType[]>(
 		`?fields=id,title,artist_title,is_public_domain,image_id&page=${activePage}&limit=3`,
@@ -39,7 +43,7 @@ const Gallery: FC<FavouritesType> = ({ favourites, callback }) => {
 								state={
 									favourites?.find((elem) => elem.id === card.id) ? true : false
 								}
-								callback={callback}
+								callback={onChangeFavourites}
 							/>
 						</GalleryItemWrapper>
 					))}

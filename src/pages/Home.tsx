@@ -8,19 +8,19 @@ import Catalog from '../components/Catalog';
 import Gallery from '../components/Gallery';
 import { Wrapper } from '../components/WrapperStyles';
 
-const Home: FC<FavouritesType> = ({ favourites, callback }) => {
+const Home = () => {
 	//console.log('----HOME');
 	return (
 		<Wrapper>
 			<BannerText>
 				Let's Find Some <span>Art</span> Here!
 			</BannerText>
-			<Search favourites={favourites} callback={callback} />
+			<Search />
 			<ErrorBoundary fallback={<h1>Error</h1>}>
-				<Gallery favourites={favourites} callback={callback} />
+				<Gallery />
 			</ErrorBoundary>
 			<ErrorBoundary fallback={<h1>Error</h1>}>
-				<Catalog favourites={favourites} callback={callback} />
+				<Catalog />
 			</ErrorBoundary>
 		</Wrapper>
 	);

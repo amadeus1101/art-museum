@@ -1,10 +1,10 @@
-import { FC, useState } from 'react';
+import { useState, useContext } from 'react';
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
-import { FavouritesType } from '@constants/FavouritesType';
 import { CardType } from '@constants/CardType';
 import { QueryType } from '@constants/QueryType';
 import { QuerySchema } from '../../constants/QuerySchema';
 import { fetchData } from '../../utils/fetchData';
+import { favouritesContext } from '../../store/favouritesContext';
 
 import Card from '../Card';
 import Headline from '../Headline';
@@ -12,8 +12,12 @@ import { Flex } from '../Catalog/styled';
 import { CardItemWrapper } from '../Card/styled';
 import { InputStyles } from './styled';
 import search_icon from '../../assets/img/icon-search.png';
+import { FavouritesType } from '@constants/FavouritesType';
 
-const Search: FC<FavouritesType> = ({ favourites, callback }) => {
+const Search = () => {
+	const { favourites, onChangeFavourites } = useContext(
+		favouritesContext
+	) as FavouritesType;
 	const [searchResult, setSearchResult] = useState<CardType[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -73,7 +77,7 @@ const Search: FC<FavouritesType> = ({ favourites, callback }) => {
 							state={
 								favourites?.find((elem) => elem.id === card.id) ? true : false
 							}
-							callback={callback}
+							callback={onChangeFavourites}
 						/>
 					</CardItemWrapper>
 				))}
