@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { FavouritesType } from '../constants/FavouritesType';
 
-import Input from '../components/Input';
+import Search from '../components/Search';
 import BannerText from '../components/BannerText';
 import ErrorBoundary from '../components/ErrorBoundary';
 import Catalog from '../components/Catalog';
@@ -15,7 +15,7 @@ const Home: FC<FavouritesType> = ({ favourites, callback }) => {
 			<BannerText>
 				Let's Find Some <span>Art</span> Here!
 			</BannerText>
-			<Input favourites={favourites} callback={callback} />
+			<Search favourites={favourites} callback={callback} />
 			<ErrorBoundary fallback={<h1>Error</h1>}>
 				<Gallery favourites={favourites} callback={callback} />
 			</ErrorBoundary>

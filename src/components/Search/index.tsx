@@ -1,36 +1,23 @@
 import { FC, useState } from 'react';
+import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
 import { FavouritesType } from '@constants/FavouritesType';
 import { CardType } from '@constants/CardType';
-import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { searchData } from '../../utils/searchData';
+import { QueryType } from '@constants/QueryType';
+import { QuerySchema } from '../../constants/QuerySchema';
+import { fetchData } from '../../utils/fetchData';
 
-import Card from '../../components/Card';
-import Headline from '../../components/Headline';
+import Card from '../Card';
+import Headline from '../Headline';
 import { Flex } from '../Catalog/styled';
-import { CardItemWrapper } from '../../components/Card/styled';
+import { CardItemWrapper } from '../Card/styled';
 import { InputStyles } from './styled';
 import search_icon from '../../assets/img/icon-search.png';
 
-interface IValues {
-	query: string;
-}
-
-const QuerySchema = Yup.object().shape({
-	query: Yup.string()
-		.required('Required')
-		.min(2, 'Query should be 2 or more symbols')
-		.max(30, 'Query should be less than 30 symbols')
-		.matches(
-			/^[0-9a-zA-Z]{3,20}[0-9a-zA-Z\s]{0,20}$/,
-			'You can use only a-z,0-9 symbols and backspaces'
-		),
-});
-
-const Input: FC<FavouritesType> = ({ favourites, callback }) => {
+const Search: FC<FavouritesType> = ({ favourites, callback }) => {
 	const [searchResult, setSearchResult] = useState<CardType[]>([]);
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<unknown | null>(null);
+	const [error, setError] = useState<string | null>(null);
+
 	if (error)
 		return (
 			<Headline
@@ -38,6 +25,7 @@ const Input: FC<FavouritesType> = ({ favourites, callback }) => {
 				subtitle="API or our server working with errors"
 			/>
 		);
+
 	return (
 		<InputStyles $isloading={loading}>
 			<Formik
@@ -45,21 +33,25 @@ const Input: FC<FavouritesType> = ({ favourites, callback }) => {
 					query: '',
 				}}
 				onSubmit={(
-					values: IValues,
-					{ setSubmitting }: FormikHelpers<IValues>
+					values: QueryType,
+					{ setSubmitting }: FormikHelpers<QueryType>
 				) => {
 					setTimeout(() => {
-						searchData(
-							`https://api.artic.edu/api/v1/artworks/search?q=${values.query.toLocaleLowerCase()}&limit=9`
-						)
-							.then((resultResp) => {
-								setSearchResult(resultResp.data);
+						setLoading(true);
+						fetchData(`/search?q=${values.query.toLocaleLowerCase()}&limit=9`)
+							.then((queryResponse) =>
+								fetchData(
+									`?ids=${queryResponse.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&limit=9`
+								)
+							)
+							.then((resultResponse) => {
+								setSearchResult(resultResponse.data);
 								setLoading(false);
 							})
 							.catch((err) => {
 								console.log('ERR2: ', err);
-								setError(err);
-								setLoading(true);
+								setError('Search error occured... Awkward!!!');
+								setLoading(false);
 							});
 					}, 500);
 				}}
@@ -90,4 +82,4 @@ const Input: FC<FavouritesType> = ({ favourites, callback }) => {
 	);
 };
 
-export default Input;
+export default Search;
