@@ -3,7 +3,7 @@ import { IFavourites } from '@constants/IFavourites';
 import { CardType } from '@constants/CardType';
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { fetchData } from '../../utils/fetchData';
+import { searchData } from '../../utils/searchData';
 
 import Card from '../../components/Card';
 import Headline from '../../components/Headline';
@@ -49,14 +49,9 @@ const Input: FC<IFavourites> = ({ favourites, callback }) => {
 					{ setSubmitting }: FormikHelpers<IValues>
 				) => {
 					setTimeout(() => {
-						fetchData(
+						searchData(
 							`https://api.artic.edu/api/v1/artworks/search?q=${values.query.toLocaleLowerCase()}&limit=9`
 						)
-							.then((queryResp) =>
-								fetchData(
-									`https://api.artic.edu/api/v1/artworks?ids=${queryResp.data.map((obj: any) => obj.id).join(',')}&fields=id,title,artist_title,is_public_domain,image_id&limit=9`
-								)
-							)
 							.then((resultResp) => {
 								setSearchResult(resultResp.data);
 								setLoading(false);
