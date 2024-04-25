@@ -1,8 +1,8 @@
 {
-	"name": "react-museum",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"name": "art-museum",
+	"version": "0.2.0",
+	"description": "Art-museum web app as a react/ts trainee project.",
+	"main": "index.jsx",
 	"scripts": {
 		"start": "webpack serve  --hot --open",
 		"build": "webpack --config webpack.config.js --mode development",
@@ -10,18 +10,19 @@
 		"format": "prettier . --write"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"author": "amadeus1101",
+	"license": "MIT",
 	"dependencies": {
 		"@eslint/js": "^9.1.1",
-		"axios": "^1.6.8",
 		"eslint-plugin-react": "^7.34.1",
+		"formik": "^2.4.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.22.3",
 		"styled-components": "^6.1.8",
 		"ttf-loader": "^1.0.2",
-		"typescript-eslint": "^7.7.0"
+		"typescript-eslint": "^7.7.0",
+		"yup": "^1.4.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.4",

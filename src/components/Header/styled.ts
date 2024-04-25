@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { devices } from '../../constants/devices';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 
 export const HeaderStyles = styled.header<{ $active?: boolean }>`
   width: 100%;
@@ -72,7 +72,7 @@ export const HeaderStyles = styled.header<{ $active?: boolean }>`
           left: 0;
           width: 100%;
           height: 2px;
-          background: ${theme.colors.white};
+          background: ${colors.white};
           transition: 0.3s;
         }
         &::before {

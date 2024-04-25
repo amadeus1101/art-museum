@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
+import { colors } from '../../constants/colors';
 import { devices } from '../../constants/devices';
 
 export const FooterStyles = styled.footer`
@@ -7,7 +7,7 @@ export const FooterStyles = styled.footer`
   padding: 32px 42px;
   display: flex;
   justify-content: center;
-  background: ${theme.colors.white};
+  background: ${colors.white};
   .footer__container {
     max-width: 1280px;
     width: 100%;

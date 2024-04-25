@@ -1,8 +1,8 @@
-import { theme } from '../../constants/theme';
-import { devices } from '../../constants/devices';
+import { colors } from '../constants/colors';
+import { devices } from '../constants/devices';
 import styled from 'styled-components';
 
-export const ArtworkWidget = styled.div`
+export const ArtworkWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -42,21 +42,21 @@ export const ArtworkWidget = styled.div`
     h4 {
       font-family: 'LexendRegular', sans-serif;
       font-size: 32px;
-      color: ${theme.colors.black};
+      color: ${colors.black};
     }
     .legend {
       p {
         margin-top: 32px;
         font-family: 'LexendRegular', sans-serif;
         font-size: 24px;
-        color: ${theme.colors.orange};
+        color: ${colors.orange_light};
       }
       b {
         margin-top: 16px;
         display: block;
         font-family: 'LexendBold', sans-serif;
         font-size: 16px;
-        color: ${theme.colors.black};
+        color: ${colors.black};
       }
     }
     .overview {
@@ -69,12 +69,12 @@ export const ArtworkWidget = styled.div`
             margin-right: 10px;
             font-family: 'LexendRegular', sans-serif;
             font-size: 16px;
-            color: ${theme.colors.orange};
+            color: ${colors.orange_light};
           }
           span {
             font-family: 'LexendRegular', sans-serif;
             font-size: 16px;
-            color: ${theme.colors.black};
+            color: ${colors.black};
           }
         }
       }

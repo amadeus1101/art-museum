@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from '../constants/theme';
+import { colors } from '../constants/colors';
 import InterRegular from '../assets/fonts/Inter-Regular.ttf';
 import InterMedium from '../assets/fonts/Inter-Medium.ttf';
 import InterBold from '../assets/fonts/Inter-Bold.ttf';
@@ -63,7 +63,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${theme.colors.white};
+    color: ${colors.white};
   }
   
 `;

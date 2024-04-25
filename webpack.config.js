@@ -11,6 +11,8 @@ module.exports = {
 	devServer: {
 		hot: true,
 		port: '5000',
+		
+		historyApiFallback: true,
 		static: {
 			directory: path.join(__dirname, 'public'),
 		},
@@ -21,6 +23,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.[hash].js',
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -31,7 +34,7 @@ module.exports = {
 	],
 	resolve: {
 		modules: [__dirname, 'src', 'node_modules'],
-		extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+		extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
 	},
 	module: {
 		rules: [
