@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { favouritesContext } from '../store/favouritesContext';
 import { FavouritesType } from '@constants/FavouritesType';
-import { ArtworkType } from '../constants/ArtworkType';
+import { ArtworkType } from '@constants/ArtworkType';
+import { favouritesContext } from '../store/favouritesContext';
 import { useFetch } from '../hooks/useFetch';
 
-import Bookmark from '../components/Bookmark/Bookmark';
 import Headline from '../components/Headline';
+import Bookmark from '../components/Bookmark/Bookmark';
 import { Wrapper } from '../components/WrapperStyles';
-import { ImageComponent } from '../components/Card/ImageComponent';
 import { ArtworkWrapper } from '../components/ArtworkWrapper';
+import { ImageComponent } from '../components/Card/ImageComponent';
 import pict from '../assets/img/preloader-micro.png';
 
 const Artwork = () => {

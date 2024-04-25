@@ -3,8 +3,8 @@ import { FavouritesType } from '@constants/FavouritesType';
 import { favouritesContext } from '../store/favouritesContext';
 
 import Card from '../components/Card';
-import BannerText from '../components/BannerText';
 import Headline from '../components/Headline';
+import BannerText from '../components/BannerText';
 import { Wrapper } from '../components/WrapperStyles';
 import { Flex } from '../components/Catalog/styled';
 import { CardItemWrapper } from '../components/Card/styled';

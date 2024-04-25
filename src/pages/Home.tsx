@@ -1,6 +1,3 @@
-import { FC } from 'react';
-import { FavouritesType } from '../constants/FavouritesType';
-
 import Search from '../components/Search';
 import BannerText from '../components/BannerText';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -9,7 +6,6 @@ import Gallery from '../components/Gallery';
 import { Wrapper } from '../components/WrapperStyles';
 
 const Home = () => {
-	//console.log('----HOME');
 	return (
 		<Wrapper>
 			<BannerText>

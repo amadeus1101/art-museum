@@ -1,14 +1,14 @@
 import { useState, useContext } from 'react';
-import { favouritesContext } from '../../store/favouritesContext';
 import { FavouritesType } from '@constants/FavouritesType';
 import { CardType } from '@constants/CardType';
+import { favouritesContext } from '../../store/favouritesContext';
 import { useFetch } from '../../hooks/useFetch';
 import { sortCards } from '../../utils/sortCards';
 
-import CatalogPlaceholder from './placeholder';
-import Headline from '../Headline';
 import Card from '../Card';
 import Sort from '../Sort';
+import Headline from '../Headline';
+import CatalogPlaceholder from './placeholder';
 import { Flex } from './styled';
 import { CardItemWrapper } from '../Card/styled';
 

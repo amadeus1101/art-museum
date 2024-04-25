@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
 import { CardType } from '@constants/CardType';
 import { QueryType } from '@constants/QueryType';
+import { FavouritesType } from '@constants/FavouritesType';
 import { QuerySchema } from '../../constants/QuerySchema';
 import { fetchData } from '../../utils/fetchData';
 import { favouritesContext } from '../../store/favouritesContext';
@@ -12,7 +13,6 @@ import { Flex } from '../Catalog/styled';
 import { CardItemWrapper } from '../Card/styled';
 import { InputStyles } from './styled';
 import search_icon from '../../assets/img/icon-search.png';
-import { FavouritesType } from '@constants/FavouritesType';
 
 const Search = () => {
 	const { favourites, onChangeFavourites } = useContext(

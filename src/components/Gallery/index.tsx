@@ -1,15 +1,15 @@
 import { useContext } from 'react';
-import { favouritesContext } from '../../store/favouritesContext';
 import { FavouritesType } from '@constants/FavouritesType';
-import { usePagination } from '../../hooks/usePagination';
-import { useFetch } from '../../hooks/useFetch';
 import { CardType } from '../../constants/CardType';
 import { PAGES_TOTAL } from '../../constants/api';
+import { favouritesContext } from '../../store/favouritesContext';
+import { usePagination } from '../../hooks/usePagination';
+import { useFetch } from '../../hooks/useFetch';
 
-import GalleryPlaceholder from './placeholder';
-import Headline from '../Headline';
 import Card from '../Card';
+import Headline from '../Headline';
 import Pagination from '../Pagination';
+import GalleryPlaceholder from './placeholder';
 import { Grid } from './styled';
 import { GalleryItemWrapper } from '../Card/styled';
 
