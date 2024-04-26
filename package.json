@@ -1,6 +1,6 @@
 {
 	"name": "art-museum",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Art-museum web app as a react/ts trainee project.",
 	"main": "index.jsx",
 	"scripts": {
