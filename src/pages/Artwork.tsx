@@ -6,7 +6,7 @@ import { favouritesContext } from '../store/favouritesContext';
 import { useFetch } from '../hooks/useFetch';
 
 import Headline from '../components/Headline';
-import Bookmark from '../components/Bookmark/Bookmark';
+import Bookmark from '../components/Bookmark';
 import { Wrapper } from '../components/WrapperStyles';
 import { ArtworkWrapper } from '../components/ArtworkWrapper';
 import { ImageComponent } from '../components/Card/ImageComponent';

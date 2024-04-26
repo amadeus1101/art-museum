@@ -11,7 +11,7 @@ module.exports = {
 	devServer: {
 		hot: true,
 		port: '5000',
-		
+
 		historyApiFallback: true,
 		static: {
 			directory: path.join(__dirname, 'public'),
@@ -47,18 +47,6 @@ module.exports = {
 						isDevelopment && require.resolve('react-refresh/babel'),
 					].filter(Boolean),
 				},
-			},
-			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
-			},
-			{
-				test: /\.png|svg|jpg|gif$/,
-				use: ['file-loader'],
-			},
-			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/i,
-				type: 'asset/resource',
 			},
 		],
 	},

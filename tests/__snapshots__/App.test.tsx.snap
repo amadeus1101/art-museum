@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtworkWrapper Should display css-wrapper for artwork 1`] = `
+<div
+  className="sc-hLQSwg hKHQnX"
+>
+  styles
+</div>
+`;
+
+exports[`BannerText Should display h1 1`] = `
+<h2
+  className="sc-dmyCSP eHVAjv"
+>
+  hi
+</h2>
+`;
+
+exports[`ErrorBoundary Should display error handler 1`] = `"errors"`;
+
+exports[`Headline should display headline with data 1`] = `
+<div
+  className="sc-beySPh dkAqYt"
+>
+  <p>
+    Subtitle
+  </p>
+  <h4>
+    Title
+  </h4>
+</div>
+`;
+
+exports[`Headline should display headline without data 1`] = `
+<div
+  className="sc-beySPh dkAqYt"
+>
+  <p />
+  <h4 />
+</div>
+`;
+
+exports[`ImageComponent Should display image 1`] = `
+<img
+  alt=""
+  loading="lazy"
+  src=""
+/>
+`;
+
+exports[`Pagination Should display pagination layout 1`] = `
+<div
+  className="sc-fsYfdN kqTWmG"
+>
+  <ul>
+    <li
+      className="active"
+      onClick={[Function]}
+    >
+      1
+    </li>
+    <li
+      className=""
+      onClick={[Function]}
+    >
+      2
+    </li>
+    <li
+      className=""
+      onClick={[Function]}
+    >
+      3
+    </li>
+    <li
+      className=""
+      onClick={[Function]}
+    >
+      4
+    </li>
+    <li
+      className=""
+      onClick={[Function]}
+    >
+      &gt;
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Sort Should display sort button 1`] = `
+<div
+  className="sc-qZrbh iKzYYv"
+>
+  <p>
+    Sort by:
+  </p>
+  <span
+    onClick={[Function]}
+  >
+    Title
+  </span>
+</div>
+`;
+
+exports[`Wrapper Should display app style wrapper 1`] = `
+<div
+  className="sc-gLLuof kUScnJ"
+>
+  styles
+</div>
+`;
